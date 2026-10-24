@@ -1,0 +1,1660 @@
+<!doctype html>
+<html lang="th" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>คลังมังงะ &amp; อนิเมะของฉัน</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500&family=Noto+Sans+Thai:wght@400;500&family=Noto+Sans:wght@400;500&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1c1620;--panel:#2a2230;--panel2:#372d3f;--line:#4d3f56;--text:#f6ecee;--mute:#bcaab8;--accent:#ff8aa0;--accent-ink:#2b0d16;
+--want:#9fb0ff;--doing:#ffc26b;--done:#7fdcae;--drop:#b3a3b0;--danger:#ff8d9b;--on-done:#06281a;--radius:10px}
+/* โหมดสว่าง = Sakura Washi: กระดาษวาชิ + ซากุระ + คราม */
+[data-theme=light]{--bg:#fbf3f4;--panel:#ffffff;--panel2:#f6e7ea;--line:#e6d0d6;--text:#2b2230;--mute:#756573;--accent:#d6455f;--accent-ink:#fff;
+--want:#3b4a8c;--doing:#a8610f;--done:#2a7d54;--drop:#7a6b78;--danger:#c0264a;--on-done:#fff}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-padding-top:70px}
+body{margin:0;background:radial-gradient(circle at 14px 14px,color-mix(in srgb,var(--accent) 13%,transparent) 1.5px,transparent 2.2px) 0 0/28px 28px,var(--bg);color:var(--text);font:400 15px/1.55 "Zen Kaku Gothic New","Noto Sans Thai","Noto Sans","Noto Sans JP",system-ui,sans-serif}
+h1,h2,.brand{font-family:"Shippori Mincho","Noto Sans Thai","Noto Sans","Noto Sans JP",serif;font-weight:600;margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{max-width:1100px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-size:20px;margin-right:auto}
+.tabs{max-width:100%;overflow-x:auto;display:flex;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:3px}
+.tabs button{white-space:nowrap;border:0;background:none;padding:6px 18px;border-radius:999px;color:var(--mute);font-weight:500}
+.tabs button[aria-selected=true]{background:var(--accent);color:var(--accent-ink)}
+.btn{border:1px solid var(--line);background:var(--panel);padding:7px 14px;border-radius:10px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:500}
+.btn.danger{color:var(--danger)}
+main{margin:auto;padding:16px}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:6px 12px;display:flex;gap:8px;align-items:baseline}
+.chip b{font-family:"Shippori Mincho","Noto Sans Thai";font-size:18px}
+.chip[aria-pressed=true]{border-color:var(--accent);background:var(--panel2)}
+.chip i{width:8px;height:8px;border-radius:50%;align-self:center}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tools input,.tools select,.field input,.field select,.field textarea{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-width:0}
+.tools input{flex:1;min-width:160px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;cursor:pointer;text-align:left;padding:0;display:block;width:100%;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.cover{position:relative;aspect-ratio:2/3;background:var(--panel2)}
+.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.badge{position:absolute;left:8px;top:8px;font-size:12px;font-weight:500;padding:2px 9px;border-radius:999px;background:var(--panel);border:1px solid currentColor}
+.own{position:absolute;right:8px;top:8px;background:var(--accent);color:var(--accent-ink);font-size:12px;padding:2px 8px;border-radius:999px;font-weight:500}
+.score{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.72);color:#ffd36b;border-radius:8px;padding:1px 8px;font-size:13px}
+.meta{padding:9px 11px 11px}
+.meta .t{font-weight:500;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.35}
+.meta .s{color:var(--mute);font-size:13px;margin-top:3px}
+.list{display:flex;flex-direction:column;gap:8px}
+.list .card{display:flex;align-items:center;gap:12px}
+.list .cover{width:54px;aspect-ratio:2/3;flex:none}
+.list .badge,.list .own,.list .score{position:static;display:inline-block;margin-right:6px}
+.list .cover .badge,.list .cover .own,.list .cover .score{display:none}
+.list .meta{flex:1;padding:8px 12px 8px 0;min-width:0}
+.list .meta .t{-webkit-line-clamp:1}
+.list .tags{margin-top:5px}
+.grid .tags{display:none}
+.grid .card{display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch}
+.grid .cover{flex:none;width:100%}
+.orig{font-size:12px;color:var(--mute);margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* แถบด้านข้าง (sidebar) ของหน้ารายการ */
+main{max-width:1380px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start}
+.split.nosd{grid-template-columns:minmax(0,1fr)}
+.split.nosd .mc{max-width:1100px;margin:0 auto;width:100%}
+#side{position:sticky;top:16px}
+@media (max-width:1050px){.split{grid-template-columns:minmax(0,1fr)}#side{position:static}}
+.sw{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 14px 8px;margin-bottom:14px}
+.sw h3{margin:0 0 10px;font:600 15px "Shippori Mincho","Noto Sans Thai",serif}
+.dn{display:flex;gap:14px;align-items:center;padding-bottom:8px}
+.dnut{width:110px;height:110px;border-radius:50%;display:grid;place-items:center;flex:none}
+.dnut>div{width:72px;height:72px;border-radius:50%;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}
+.dnut b{font:600 22px "Shippori Mincho","Noto Sans Thai",serif}
+.dnut small{font-size:11px;color:var(--mute)}
+.lg2{display:grid;gap:4px;font-size:13px;flex:1;min-width:0}
+.lg2 span{display:flex;align-items:center;gap:6px}
+.lg2 i{width:9px;height:9px;border-radius:2px;flex:none}
+.lg2 em{margin-left:auto;font-style:normal;color:var(--mute)}
+.lrow{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:7px 0;background:none;border:0;border-top:1px solid var(--line);cursor:pointer;color:inherit}
+.lrow img{width:34px;height:48px;object-fit:cover;border-radius:5px;flex:none;background:var(--panel2)}
+.lrow b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500;font-size:13px}
+.lrow span{font-size:12px;color:var(--mute);white-space:nowrap}
+.lrow:hover b{color:var(--accent)}
+.empty{text-align:center;color:var(--mute);padding:60px 16px;border:1px dashed var(--line);border-radius:var(--radius)}
+dialog{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:18px;padding:0;width:min(560px,94vw);max-height:90vh}
+dialog::backdrop{background:rgba(5,3,15,.65)}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.dh h2{font-size:18px}
+.db{padding:16px 18px;overflow:auto;max-height:calc(90vh - 130px)}
+.df{padding:12px 18px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.field{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;font-size:14px;color:var(--mute)}
+.field input,.field select,.field textarea{color:var(--text);width:100%}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.res{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:var(--panel2);border:1px solid transparent;border-radius:12px;padding:8px;margin-bottom:8px}
+.res:hover{border-color:var(--accent)}
+.res img{width:44px;height:64px;object-fit:cover;border-radius:6px;flex:none;background:var(--line)}
+.res small{color:var(--mute);display:block}
+.seg{display:flex;gap:6px;margin-bottom:12px}
+.seg button{flex:1;border:1px solid var(--line);background:none;border-radius:10px;padding:6px}
+.seg button[aria-selected=true]{background:var(--panel2);border-color:var(--accent)}
+.note{color:var(--mute);font-size:13px;margin:6px 0}
+.editcover{display:flex;gap:12px;margin-bottom:14px;align-items:center}
+.editcover img{width:64px;height:92px;object-fit:cover;border-radius:8px;background:var(--panel2)}
+#volDlg{width:min(720px,96vw)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:10px;margin-top:12px}
+.vt{background:var(--panel2);border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.vc{position:relative;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;font:600 22px "Shippori Mincho";color:var(--mute)}
+.vc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4;filter:grayscale(.7)}
+.vt.has .vc img{opacity:1;filter:none}
+.vc b{position:absolute;left:4px;bottom:4px;background:rgba(0,0,0,.75);color:#fff;font-weight:500;font-size:12px;padding:0 6px;border-radius:6px}
+.vb{display:flex}
+.pin{position:absolute;right:4px;top:4px;z-index:2;font-style:normal;color:#ffd36b;text-shadow:0 0 6px #000}
+.vb button{flex:1;border:0;background:none;padding:4px 0;font-size:12px;color:var(--mute)}
+.vb button+button{border-left:1px solid var(--line)}
+.vb button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);font-weight:500}
+#lang{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:7px 10px}
+.shelftools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
+.shelf{margin-bottom:30px}
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.sh h2{font-size:18px;flex:1;min-width:0}
+.sh-t{background:none;border:0;padding:0;text-align:left;color:inherit;display:flex;align-items:center;gap:8px;cursor:pointer;max-width:100%}
+.sh-t:hover{color:var(--accent)}
+.chev{display:inline-block;transition:transform .15s;font-size:14px}
+.sh-t[aria-expanded=false] .chev{transform:rotate(-90deg)}
+.sh small{color:var(--mute);font-weight:400}
+.shcat{font:600 14px "Shippori Mincho","Noto Sans Thai",serif;color:var(--mute);letter-spacing:.03em;border-bottom:1px solid var(--line);padding-bottom:8px;margin:8px 0 18px}
+.shcat .sh-t{font:inherit;color:inherit}
+.bkw{min-width:0}
+.bkw .bk{width:100%;display:block}
+.bkw .cap{font-size:12px;line-height:1.3;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:18px 16px}
+.bk{position:relative;border:0;padding:0;background:var(--panel2);border-radius:8px;overflow:hidden;aspect-ratio:2/3;box-shadow:0 4px 12px rgba(0,0,0,.35);transition:transform .15s}
+.bk:hover{transform:translateY(-4px)}
+.bk img{width:100%;height:100%;object-fit:cover;display:block}
+.bk.miss img{filter:grayscale(1);opacity:.38}
+.bk.miss .no{background:var(--mute);color:var(--bg)}
+.bk .fb{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:600 30px "Shippori Mincho";color:var(--mute)}
+.bk .no{position:absolute;right:6px;top:6px;min-width:26px;height:26px;padding:0 6px;border-radius:999px;background:var(--done);color:var(--on-done);font:600 13px "Shippori Mincho";display:flex;align-items:center;justify-content:center}
+.bk .rd{position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.72);color:#9df0c4;font-size:12px;text-align:center;padding:2px}
+.pill{display:inline-block;font-size:12px;line-height:1.7;padding:0 9px;border-radius:999px;border:1px solid var(--c);background:color-mix(in srgb,var(--c) 18%,transparent);color:var(--text);margin:3px 4px 0 0}
+button.pill{font:inherit;font-size:12px;cursor:pointer}
+button.pill[aria-pressed=true]{background:var(--c);color:#fff;text-shadow:0 0 3px rgba(0,0,0,.65)}
+.pills{margin-top:4px}
+.pillrow{display:flex;flex-wrap:wrap}
+.cfgrow{display:flex;gap:8px;margin-bottom:8px}
+.cfgrow input[type=color]{width:44px;height:38px;padding:2px;flex:none;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.cfgrow .nm{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+#setDlg h3{font:600 16px "Shippori Mincho","Noto Sans Thai",serif;margin:20px 0 8px}
+#setDlg h3:first-child{margin-top:0}
+#settingsBtn[data-sync]::after{content:" ●";font-size:9px;vertical-align:middle}
+#settingsBtn[data-sync=ok]::after{color:var(--done)}
+#settingsBtn[data-sync=busy]::after{color:var(--doing)}
+#settingsBtn[data-sync=err]::after{color:var(--danger)}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px}
+.kp div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.kp b{display:block;font:600 24px "Shippori Mincho","Noto Sans Thai",serif}
+.kp span{color:var(--mute);font-size:13px}
+.sgr{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.pn{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+.pn h3{margin:0 0 12px;font:600 15px "Shippori Mincho","Noto Sans Thai",serif}
+.donut{width:130px;height:130px;border-radius:50%;flex:none;position:relative}
+.donut::after{content:"";position:absolute;inset:26px;border-radius:50%;background:var(--panel)}
+.dl{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.dl ul{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:14px}
+.dl li i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px}
+.cols{display:flex;align-items:stretch;gap:5px;height:170px}
+.cols>div{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;font-size:11px;color:var(--mute)}
+.cols .cb{flex:1;display:flex;align-items:flex-end;width:100%}
+.cols i{display:block;width:100%;background:var(--accent);border-radius:5px 5px 0 0;min-height:2px}
+.cols em{font-style:normal;color:var(--text);height:15px}
+.br{display:grid;grid-template-columns:minmax(70px,120px) 1fr auto;gap:8px;align-items:center;margin-bottom:7px;font-size:13px}
+.br span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bt{background:var(--panel2);border-radius:6px;height:12px;overflow:hidden}
+.bt i{display:block;height:100%;border-radius:6px}
+.brand:before{content:none}
+.card{box-shadow:0 2px 10px color-mix(in srgb,var(--text) 8%,transparent)}
+.mp{position:absolute;left:8px;bottom:8px;background:#f3a73a;color:#3a2200;font-size:12px;font-weight:600;padding:1px 9px;border-radius:99px}
+.list .cover .mp{display:none}
+.nx{font-size:12px;color:var(--accent);margin-top:2px}
+.sh{flex-wrap:wrap}
+.sm{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mute);flex-wrap:wrap}
+.mp2{font-style:normal;background:#f3a73a;color:#3a2200;padding:1px 9px;border-radius:99px;font-weight:600}
+.sm .ok{font-style:normal;color:var(--done);font-weight:600}
+.pb{display:block;width:90px;height:6px;border-radius:9px;background:var(--panel2);overflow:hidden}
+.pb b{display:block;height:100%;background:var(--accent)}
+.big{font:600 32px "Shippori Mincho","Noto Sans Thai",serif;margin:4px 0 12px}
+.big small{font:400 14px "Noto Sans Thai",sans-serif;color:var(--mute);margin-left:8px}
+.ph{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.ph h3{margin:0;flex:1}
+#detDlg{width:min(900px,100vw);height:min(100dvh,980px);max-height:100dvh}
+#detDlg[open]{display:flex;flex-direction:column}
+@media (max-width:640px){#detDlg{width:100vw;height:100dvh;border-radius:0;border:0}}
+.dtop{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);flex:none}
+.dtop h2{flex:1;font-size:16px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;min-width:0}
+.dbody{flex:1;overflow:auto;padding:16px 18px 28px}
+.hero{position:relative;overflow:hidden;padding:20px 18px;border-radius:14px;margin-bottom:14px;background:var(--panel2);border:1px solid var(--line)}
+.hero .hbg{position:absolute;inset:-24px;width:calc(100% + 48px);height:calc(100% + 48px);object-fit:cover;filter:blur(26px) saturate(1.2);opacity:.38}
+.hero .hin{position:relative;display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap}
+.hero .hcov{width:128px;aspect-ratio:2/3;object-fit:cover;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.35);background:var(--panel)}
+.hero .hm{flex:1;min-width:200px}
+.hero h2{font-size:24px;line-height:1.25;margin:8px 0 4px}
+.badge2{display:inline-block;font-size:12px;font-weight:500;padding:1px 10px;border-radius:99px;background:var(--panel);border:1px solid currentColor}
+.dsub{color:var(--mute);font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px}
+.tile{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-align:center}
+.tile span{display:block;font-size:12px;color:var(--mute)}
+.tile b{display:block;font:600 21px "Shippori Mincho","Noto Sans Thai",serif}
+.pcard{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:14px}
+.pcard h3{margin:0 0 8px;font:600 15px "Shippori Mincho","Noto Sans Thai",serif}
+.pbar{height:8px;border-radius:9px;background:var(--line);overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--accent)}
+.prow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:13px}
+.dots{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.dots i{width:12px;height:12px;border-radius:50%;background:var(--line)}
+.dots i.r{background:var(--done)}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:14px 12px;margin-top:10px}
+.dc{display:block;width:100%;padding:0;border:0;background:var(--panel2);border-radius:10px;overflow:hidden;aspect-ratio:2/3;position:relative;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.dc img{width:100%;height:100%;object-fit:cover;display:block}
+.dc .fb{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:600 28px "Shippori Mincho";color:var(--mute)}
+.dc .num{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,.72);color:#fff;border-radius:6px;padding:0 7px;font-size:12px;font-weight:500}
+.dc .rdm{position:absolute;right:6px;bottom:6px;background:var(--done);color:var(--on-done);border-radius:6px;padding:0 6px;font-size:11px;font-weight:600}
+.dt{position:relative}
+.dt.miss .dc img{filter:grayscale(1);opacity:.38}
+.dt .ck,.dt .hrt{position:absolute;top:6px;width:26px;height:26px;border-radius:50%;border:2px solid #fff;background:rgba(0,0,0,.4);color:#fff;font-size:14px;padding:0;line-height:1;display:flex;align-items:center;justify-content:center}
+.dt .ck{right:6px}.dt .hrt{left:6px}
+.dt .ck[aria-pressed=true]{background:var(--done);border-color:var(--done);color:var(--on-done)}
+.dt .hrt[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.pr{font-size:12px;color:var(--mute);margin-top:4px;min-height:1.3em}
+.wcard{background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 16%,var(--panel)),var(--panel));border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:14px}
+.wl{color:var(--accent);font-weight:600}
+.wh{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}
+.wh h3{margin:0 0 4px}
+.cnt{background:var(--panel2);border:1px solid var(--line);border-radius:99px;padding:2px 12px;font-size:13px;white-space:nowrap}
+.wrow{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}
+.wt{width:104px;flex:none}
+.btn.mini{padding:3px 8px;font-size:12px;width:100%;margin-top:4px}
+.res small.have{color:var(--done);font-weight:500}
+.bk .wh2{position:absolute;left:6px;top:6px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-size:13px}
+.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.app{display:grid;grid-template-columns:208px minmax(0,1fr);align-items:start;min-height:100vh}
+.content{min-width:0}
+.nav{position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;gap:4px;padding:14px 10px;background:var(--panel);border-right:1px solid var(--line)}
+.brandbox{display:flex;gap:9px;align-items:center;padding:2px 6px 12px}
+.logo{width:34px;height:34px;flex:none;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-size:17px}
+.nav .brand{font-size:15px;margin:0;line-height:1.25;word-break:break-word}
+.bsub{display:block;color:var(--mute);font-size:11px;letter-spacing:.12em}
+.nav .tabs{flex-direction:column;background:none;border:0;border-radius:0;padding:0;overflow:visible;gap:4px}
+.nav .tabs button{display:flex;align-items:center;gap:9px;width:100%;text-align:left;border-radius:9px;padding:8px 10px;font-size:14px;color:var(--text)}
+.nav .tabs button:hover{background:var(--panel2)}
+.nav .tabs button[aria-selected=true]{background:var(--accent);color:var(--accent-ink)}
+.navfoot{margin-top:auto;display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid var(--line)}
+.navfoot select,.navfoot .btn{width:100%;font-size:13px;padding-top:6px;padding-bottom:6px}
+.navart{margin:10px 0 0;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.navart img{display:block;width:100%;max-height:200px;object-fit:cover}
+.greet{display:flex;gap:18px;flex-wrap:wrap;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:14px}
+.gs{color:var(--mute);font-size:14px}
+.gn{font:700 24px "Shippori Mincho","Noto Sans Thai",serif;line-height:1.2}
+.gt{color:var(--mute);font-size:13px;margin-top:2px}
+.gk{display:grid;grid-template-columns:repeat(4,minmax(84px,1fr));gap:10px;flex:1;min-width:300px}
+.gk .tile{padding:8px 10px}
+.banner{position:relative;min-height:160px;display:flex;align-items:flex-end;padding:20px 26px;overflow:hidden;color:var(--text);background:radial-gradient(circle at 86% 38%,color-mix(in srgb,var(--accent) 45%,transparent) 0 62px,transparent 64px),linear-gradient(120deg,color-mix(in srgb,var(--accent) 20%,var(--bg)),var(--panel2));background-size:cover;background-position:center;border-bottom:1px solid var(--line)}
+.banner.has{color:#fff;background-size:cover}
+.banner.has:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.6),rgba(0,0,0,.08) 75%)}
+.bc{position:relative}
+.bn{font:700 28px "Shippori Mincho","Noto Sans Thai",serif;line-height:1.2}
+.bs{margin-top:4px;font-size:14px;opacity:.9}
+@media (max-width:900px){
+ .app{grid-template-columns:minmax(0,1fr)}
+ .nav{height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;padding:8px 10px;z-index:6;border-right:0;border-bottom:1px solid var(--line)}
+ .brandbox{padding:0;flex:1}
+ .nav .tabs{order:3;flex:1 1 100%;flex-direction:row;overflow-x:auto}
+ .nav .tabs button{width:auto;white-space:nowrap}
+ .navfoot{margin:0;flex-direction:row;border:0;padding:0}
+ .navfoot select,.navfoot .btn{width:auto}
+ .banner{min-height:110px;padding:14px 16px}.bn{font-size:22px}
+ .navart{display:none!important}
+}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:9px 18px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:20}
+#toast.on{opacity:1}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="nav" id="nav">
+  <div class="brandbox"><span class="logo" aria-hidden="true">✿</span><div style="min-width:0"><h1 class="brand" id="libName">คลังของฉัน</h1><small class="bsub">マンガ・アニメ</small></div></div>
+  <div class="tabs" role="tablist">
+    <button role="tab" id="tab-manga" aria-selected="true"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3zM4 17a3 3 0 0 1 3-3h11"/></svg>มังงะ</button>
+    <button role="tab" id="tab-anime" aria-selected="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l14 8-14 8z"/></svg>อนิเมะ</button>
+    <button role="tab" id="tab-book" aria-selected="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>หนังสืออื่นๆ</button>
+    <button role="tab" id="tab-shelf" aria-selected="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M5 20V8h4v12M11 20V4h4v16M17 20v-9h2v9"/></svg>ชั้นหนังสือ</button>
+    <button role="tab" id="tab-wish" aria-selected="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>Wishlist</button>
+    <button role="tab" id="tab-stats" aria-selected="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>สถิติ</button>
+  </div>
+  <div class="navart" id="navArt" hidden></div>
+  <div class="navfoot">
+    <select id="lang" aria-label="Language"><option value="th">ไทย</option><option value="en">English</option><option value="ru">Русский</option><option value="ja">日本語</option></select>
+    <button class="btn" id="theme" aria-label="สลับธีม">โหมดมืด</button>
+    <button class="btn" id="settingsBtn"><span aria-hidden="true">⚙</span> ตั้งค่า</button>
+  </div>
+</aside>
+<div class="content">
+<div class="banner" id="banner"><div class="bc"><div class="bn" id="bName"></div><div class="bs" id="bTag"></div></div></div>
+
+<main>
+  <div class="split" id="split"><div class="mc">
+  <div id="greet"></div>
+  <div class="stats" id="stats"></div>
+  <div class="tools">
+    <input id="q" type="search" placeholder="ค้นหาในรายการของฉัน" aria-label="ค้นหาในรายการ">
+    <select id="sort" aria-label="เรียงตาม">
+      <option value="added">ล่าสุดที่เพิ่ม</option>
+      <option value="title">ชื่อเรื่อง ก-ฮ / A-Z</option>
+      <option value="score">คะแนนสูงสุด</option>
+    </select>
+    <select id="fCat" aria-label="ธีม"></select><select id="fDemo" aria-label="Demographic"></select><select id="fTag" aria-label="แท็ก"></select><select id="fPub" aria-label="สำนักพิมพ์"></select>
+    <button class="btn" id="view">มุมมองรายการ</button>
+    <button class="btn primary" id="add">+ เพิ่มรายการ</button>
+  </div>
+  <div id="out"></div>
+  </div><aside id="side"></aside></div>
+  <p class="note" style="margin-top:28px">
+    <button class="btn" id="export">ส่งออก JSON</button>
+    <button class="btn" id="import">นำเข้า JSON</button>
+    <input type="file" id="importFile" accept="application/json" hidden>
+    ข้อมูลเก็บในเบราว์เซอร์เครื่องนี้ ควรส่งออกสำรองเป็นระยะ
+  </p>
+</main>
+</div></div>
+
+<dialog id="addDlg">
+  <div class="dh"><h2 id="addTitle">เพิ่มรายการ</h2><button class="btn" data-close aria-label="ปิด">ปิด</button></div>
+  <div class="db">
+    <div class="seg" role="tablist" id="addSeg">
+      <button id="m-search" aria-selected="true">ค้นหาจากฐานข้อมูล</button>
+      <button id="m-manual" aria-selected="false">กรอกเอง</button>
+    </div>
+    <div id="p-search">
+      <div class="row" style="grid-template-columns:1fr auto;margin-bottom:8px">
+        <input id="sq" placeholder="พิมพ์ชื่อเรื่อง เช่น Frieren" style="background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-width:0">
+        <select id="srcSel" style="background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px"></select>
+      </div>
+      <div id="results"><p class="note">พิมพ์ชื่อเรื่องเพื่อค้นหา ผลลัพธ์จะขึ้นอัตโนมัติ</p></div>
+    </div>
+    <div id="p-manual" hidden>
+      <label class="field">ชื่อเรื่อง<input id="mTitle"></label>
+      <label class="field" id="mAuthorL">ผู้แต่ง<input id="mAuthor"></label>
+      <div class="row">
+        <label class="field">ปีที่ออก<input id="mYear" inputmode="numeric"></label>
+        <label class="field">อัปโหลดปก<input id="mFile" type="file" accept="image/*"></label>
+      </div>
+      <label class="field">หรือวาง URL รูปปก<input id="mCover" placeholder="https://..."></label>
+      <button class="btn primary" id="mSave">เพิ่มรายการ</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="editDlg">
+  <div class="dh"><h2 id="eTitle">แก้ไข</h2><button class="btn" data-close aria-label="ปิด">ปิด</button></div>
+  <div class="db">
+    <div class="editcover"><img id="eImg" alt=""><div><div id="eName" style="font-weight:500"></div><div id="eSub" class="note"></div></div></div>
+    <label class="field">ชื่อเรื่อง<input id="eTitleIn"></label>
+    <label class="field">ผู้แต่ง<input id="eAuthor"></label>
+    <div class="note" id="eOrigRow" style="margin:-6px 0 12px"><span id="eOrig"></span><button class="btn mini" id="eRevert" type="button" style="width:auto;margin:0 0 0 8px">ใช้ชื่อเดิม</button></div>
+    <div class="row">
+      <label class="field">สถานะ<select id="eStatus"></select></label>
+      <label class="field">คะแนน<select id="eScore"></select></label>
+    </div>
+    <label class="field">Demographic<select id="eDemo"></select></label>
+    <div class="field"><span>ธีม</span><div id="eThemes" class="pillrow"></div></div>
+    <div class="field"><span>แท็ก</span><div id="eTags" class="pillrow"></div></div>
+    <button class="btn" id="eCfgBtn" style="margin-bottom:12px">จัดการธีม แท็ก และ Demographic</button>
+    <div class="row" id="eProgRow">
+      <label class="field"><span id="eProgL"></span><input id="eProg" type="number" min="0"></label>
+      <label class="field"><span id="eTotL"></span><input id="eTot" type="number" min="0"></label>
+    </div>
+    <div id="eOwnBox" class="row">
+      <label class="field" style="flex-direction:row;align-items:center;gap:8px;color:var(--text)"><input id="eOwn" type="checkbox" style="width:auto"> ซื้อแล้ว</label>
+      <label class="field" id="eVolsL">จำนวนเล่มที่มี<input id="eVols" type="number" min="0"></label>
+    </div>
+    <div class="field" id="ePubL"><span>สำนักพิมพ์</span><div style="display:flex;gap:6px"><select id="ePub" style="flex:1"></select><button class="btn" id="ePubAdd" type="button" aria-label="เพิ่มสำนักพิมพ์">+</button></div></div>
+    <button class="btn" id="eVolBtn" style="margin-bottom:12px">จัดการเล่ม / ดึงปกแต่ละเล่ม</button>
+    <label class="field">โน้ตส่วนตัว<textarea id="eNote" rows="3"></textarea></label>
+  </div>
+  <div class="df"><button class="btn danger" id="eDel" style="margin-right:auto">ลบ</button><button class="btn primary" id="eSave">บันทึก</button></div>
+</dialog>
+<dialog id="volDlg">
+  <div class="dh"><h2 id="vTitle">เล่มของฉัน</h2><button class="btn" data-close aria-label="ปิด">ปิด</button></div>
+  <div class="db">
+    <div class="row" style="grid-template-columns:1fr auto;margin-bottom:6px">
+      <input id="vq" placeholder="ชื่อเรื่องสำหรับค้นหาเล่ม" style="background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-width:0">
+      <button class="btn primary" id="vFetch">ดึงปกแต่ละเล่ม</button>
+    </div>
+    <p class="note" id="vNote">ดึงปกจาก MangaDex (ต้องตั้ง proxy) หรือ Google Books ถ้าไม่เจอ ลองเปลี่ยนชื่อเป็นชื่ออังกฤษหรือชื่อไทยตามที่พิมพ์บนหนังสือ</p>
+    <label class="field" style="margin:4px 0 8px"><span>MangaDex proxy URL (ไม่บังคับ)</span><input id="vProxy" placeholder="https://xxx.workers.dev" autocomplete="off"></label>
+    <label class="field" style="margin:4px 0 12px"><span>Google Books API key (ไม่บังคับ)</span><input id="vKey" placeholder="AIza..." autocomplete="off"></label>
+    <div class="row" style="grid-template-columns:140px auto 1fr;align-items:center">
+      <input id="vN" type="number" min="1" max="300" placeholder="จำนวนเล่ม" style="background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-width:0">
+      <button class="btn" id="vGen">สร้างเล่ม 1–N</button><span></span>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <label class="field">ราคาปกต่อเล่ม (฿)<input id="vPc" type="number" min="0" step="any"></label>
+      <label class="field">ราคาที่จ่ายต่อเล่ม (฿)<input id="vPd" type="number" min="0" step="any"></label>
+    </div>
+    <div id="vSum" class="sm" style="margin:2px 0 4px"></div>
+    <div id="vGrid" class="vgrid"></div>
+  </div>
+  <div class="df"><button class="btn" id="vAll" style="margin-right:auto">ติ๊ก “ซื้อ” ครบทุกเล่ม</button><button class="btn" id="vNext">ซื้อเล่มถัดไป</button><button class="btn" id="vRead">ติ๊ก “อ่าน” ครบทุกเล่ม</button><button class="btn primary" id="vDone">เสร็จ</button></div>
+</dialog>
+<dialog id="covDlg">
+  <div class="dh"><h2 id="cvTitle">ปกเล่ม</h2><button class="btn" data-close aria-label="ปิด">ปิด</button></div>
+  <div class="db">
+    <div class="editcover"><img id="cvImg" alt=""><div class="note" id="cvInfo"></div></div>
+    <label class="field">วาง URL รูปปก<input id="cvUrl" placeholder="https://..." autocomplete="off"></label>
+    <label class="field">หรืออัปโหลดรูปปก<input id="cvFile" type="file" accept="image/*"></label>
+    <div class="row">
+      <label class="field">ราคาปกเล่มนี้ (฿)<input id="cvPc" type="number" min="0" step="any"></label>
+      <label class="field">ราคาที่จ่ายเล่มนี้ (฿)<input id="cvPd" type="number" min="0" step="any"></label>
+    </div>
+    <label class="field">วันที่ซื้อ<input id="cvDate" type="date"></label>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;font-size:14px">
+      <label style="display:flex;align-items:center;gap:6px"><input id="cvOwn" type="checkbox"> ซื้อแล้ว</label>
+      <label style="display:flex;align-items:center;gap:6px"><input id="cvRead" type="checkbox"> อ่านแล้ว</label>
+      <label style="display:flex;align-items:center;gap:6px"><input id="cvWish" type="checkbox"><span aria-hidden="true">♡</span> อยากได้ (Wishlist)</label>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn" id="cvPin">ตั้งเป็นปกหลักของเรื่อง</button>
+      <button class="btn" id="cvUnpin">ใช้ปกหลักตามค่ารวม</button>
+      <button class="btn danger" id="cvDel">ลบปกเล่มนี้</button>
+    </div>
+  </div>
+  <div class="df"><button class="btn primary" id="cvSave">บันทึก</button></div>
+</dialog>
+<dialog id="detDlg">
+  <div class="dtop"><button class="btn" data-close aria-label="ปิด">←</button><h2 id="dtTitle"></h2><button class="btn" id="dEdit">แก้ไข</button></div>
+  <div class="dbody" id="dBody"></div>
+</dialog>
+<dialog id="setDlg">
+  <div class="dh"><h2>ตั้งค่า</h2><button class="btn" data-close aria-label="ปิด">ปิด</button></div>
+  <div class="db">
+    <h3>ซิงค์ข้ามเครื่อง</h3>
+    <p class="note">ซิงค์ผ่าน Secret Gist ในบัญชี GitHub ของคุณ สร้างโทเคนแบบ Classic ที่ GitHub → Settings → Developer settings → Personal access tokens (classic) โดยติ๊กสิทธิ์ gist อย่างเดียว แล้ววางโทเคนเดียวกันในทุกเครื่อง</p>
+    <label class="field">โทเคน GitHub (สิทธิ์ gist)<input id="syTok" type="password" autocomplete="off" placeholder="ghp_..."></label>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" id="syNow">ซิงค์ตอนนี้</button><button class="btn" id="syOff">ตัดการเชื่อมต่อ</button></div>
+    <p class="note" id="syMsg"></p>
+    <h3>ชื่อคลังและแบนเนอร์</h3>
+    <label class="field">ชื่อคลัง<input id="setName" placeholder="คลังของฉัน"></label>
+    <label class="field">ข้อความใต้ชื่อ (ไม่บังคับ)<input id="setTag"></label>
+    <label class="field">ชื่อของคุณ (ใช้ทักทาย)<input id="setUser"></label>
+    <label class="field">อัปโหลดรูปประกอบแถบซ้าย<input id="setNavFile" type="file" accept="image/*"></label>
+    <label class="field">หรือวาง URL รูปแถบซ้าย<input id="setNavUrl" placeholder="https://..."></label>
+    <div style="margin-bottom:10px"><button class="btn" id="setNavClear" type="button">ล้างรูปแถบซ้าย</button></div>
+    <label class="field">อัปโหลดรูปแบนเนอร์<input id="setBanFile" type="file" accept="image/*"></label>
+    <label class="field">หรือวาง URL รูปแบนเนอร์<input id="setBanUrl" placeholder="https://..."></label>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:6px">
+      <button class="btn" id="setBanClear" type="button">ล้างรูปแบนเนอร์</button>
+      <label style="display:flex;gap:6px;align-items:center"><input id="setBanShow" type="checkbox"> แสดงแบนเนอร์</label>
+    </div>
+    <p class="note">รูปที่อัปโหลดเก็บเฉพาะเครื่องนี้ ส่วนชื่อ ข้อความ และ URL รูปซิงค์ข้ามเครื่องตามปกติ แนะนำภาพกว้างราว 1600×300px</p>
+    <h3>ปกหลักในหน้ารายการ</h3>
+    <select id="coverMode" aria-label="ปกหลักในหน้ารายการ" style="width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;color:var(--text)">
+      <option value="orig">ปกจากฐานข้อมูล (ค่าเริ่มต้น)</option>
+      <option value="first">ปกเล่ม 1 (เล่มเลขน้อยสุดที่มีปก)</option>
+      <option value="latest">ปกเล่มล่าสุดที่ซื้อ</option>
+    </select>
+    <p class="note">ใช้กับมังงะที่ดึงปกรายเล่มไว้แล้ว เรื่องที่ตั้งปกหลักเองไว้จะไม่ถูกเปลี่ยน</p>
+    <h3>ธีม</h3><div id="catList"></div><button class="btn" id="catAdd">+ เพิ่มธีม</button>
+    <h3>Demographic</h3><div id="demoList"></div><button class="btn" id="demoAdd">+ เพิ่ม Demographic</button>
+    <h3>แท็ก</h3><div id="tagList"></div><button class="btn" id="tagAdd">+ เพิ่มแท็ก</button>
+    <h3>สำนักพิมพ์</h3><div id="pubList"></div><button class="btn" id="pubAdd">+ เพิ่มสำนักพิมพ์</button>
+  </div>
+  <div class="df"><button class="btn primary" data-close>เสร็จ</button></div>
+</dialog>
+<div id="toast" role="status"></div>
+
+<script>
+const $=(s,e=document)=>e.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const PH='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300"><rect width="200" height="300" fill="#2c2850"/></svg>');
+
+/* ---------- ข้อมูล (localStorage) ----------
+ state = { items:[{ id, type:'manga'|'anime', src:'mangadex'|'jikan'|'custom', srcId, title, cover, year,
+   status, score(0-10), progress, total, owned(bool), vols, note, added(ms) }], theme, view, tab } */
+const KEY='otaku-list-v1';
+let S;
+try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch{S={}}
+S={items:[],theme:'light',view:'grid',tab:'manga',lang:'th',cfg:{tags:[],cats:[],pubs:[]},cfgUpd:0,deleted:{},...S};
+S.cfg=S.cfg||{};for(const k of['tags','cats','pubs','demos'])S.cfg[k]=S.cfg[k]||[];
+if(S.themeV!==2){S.theme='light';S.themeV=2}   // เปลี่ยนธีมเริ่มต้นเป็น Sakura Washi
+let filter='all';
+const SNAP=new Map();let lastCfg='';
+const uid=()=>(crypto.randomUUID?crypto.randomUUID():String(Math.random())).replace(/-/g,'').slice(0,8);
+function rebuildSnap(){SNAP.clear();for(const i of S.items)SNAP.set(i.id,JSON.stringify({...i,upd:0}));lastCfg=JSON.stringify(S.cfg)}
+// save: ตรวจว่ารายการไหนเปลี่ยน/ถูกลบ แล้วบันทึกเวลาแก้ไข (upd) ไว้ใช้ตอนซิงค์
+function save(quiet){
+  let dirty=false;const ids=new Set();
+  for(const i of S.items){ids.add(i.id);const j=JSON.stringify({...i,upd:0});if(SNAP.get(i.id)!==j){i.upd=Date.now();SNAP.set(i.id,j);dirty=true}}
+  for(const id of [...SNAP.keys()])if(!ids.has(id)){SNAP.delete(id);S.deleted[id]=Date.now();dirty=true}
+  const c=JSON.stringify(S.cfg);if(c!==lastCfg){lastCfg=c;S.cfgUpd=Date.now();dirty=true}
+  try{localStorage.setItem(KEY,JSON.stringify(S))}catch{toast('บันทึกไม่ได้ พื้นที่เบราว์เซอร์เต็ม')}
+  if(dirty&&!quiet)schedulePush();
+}
+// หมวดหมู่เดิม (cat เลือกได้ 1) -> ธีม (themes เลือกได้หลายอัน) ข้อมูลเดิมไม่หาย
+const normItem=i=>{i.upd=i.upd||i.added||0;i.tags=i.tags||[];if(i.cat)i.themes=[...new Set([...(i.themes||[]),i.cat])];delete i.cat;i.themes=i.themes||[]};
+S.items.forEach(normItem);
+rebuildSnap();
+function toast(m,...a){const el=$('#toast');el.textContent=tr(m,...a);el.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('on'),2400)}
+
+const STATUS={
+ manga:[['want','อยากอ่าน'],['doing','กำลังอ่าน'],['done','อ่านจบ'],['drop','ดร็อป']],
+ anime:[['want','อยากดู'],['doing','กำลังดู'],['done','ดูจบ'],['drop','ดร็อป']],
+ book:[['want','อยากอ่าน'],['doing','กำลังอ่าน'],['done','อ่านจบ'],['drop','ดร็อป']]};
+const sLabel=(ty,k)=>tr(STATUS[ty].find(x=>x[0]===k)?.[1]||k);
+
+/* ---------- หลายภาษา: key = ข้อความภาษาไทย, ค่า = [อังกฤษ, รัสเซีย, ญี่ปุ่น] ---------- */
+const LI={en:0,ru:1,ja:2};
+const DICT={
+"คลังมังงะ & อนิเมะของฉัน":["My Manga & Anime Library","Моя библиотека манги и аниме","マイ マンガ＆アニメ ライブラリ"],
+"คลังของฉัน":["My Library","Моя библиотека","マイライブラリ"],
+"มังงะ":["Manga","Манга","マンガ"],
+"อนิเมะ":["Anime","Аниме","アニメ"],
+"สลับธีม":["Toggle theme","Сменить тему","テーマ切替"],
+"โหมดสว่าง":["Light mode","Светлая тема","ライトモード"],
+"โหมดมืด":["Dark mode","Тёмная тема","ダークモード"],
+"ค้นหาในรายการของฉัน":["Search my list","Поиск по моему списку","マイリストを検索"],
+"ค้นหาในรายการ":["Search list","Поиск по списку","リスト内検索"],
+"เรียงตาม":["Sort by","Сортировка","並べ替え"],
+"ล่าสุดที่เพิ่ม":["Recently added","Недавно добавленные","追加順（新しい順）"],
+"ชื่อเรื่อง ก-ฮ / A-Z":["Title A–Z","Название А–Я","タイトル順"],
+"คะแนนสูงสุด":["Highest score","Высокая оценка","評価が高い順"],
+"มุมมองรายการ":["List view","Вид списком","リスト表示"],
+"มุมมองปก":["Cover view","Вид обложек","カバー表示"],
+"+ เพิ่มรายการ":["+ Add","+ Добавить","+ 追加"],
+"ส่งออก JSON":["Export JSON","Экспорт JSON","JSONを書き出す"],
+"นำเข้า JSON":["Import JSON","Импорт JSON","JSONを読み込む"],
+"ข้อมูลเก็บในเบราว์เซอร์เครื่องนี้ ควรส่งออกสำรองเป็นระยะ":["Data is stored in this browser. Export a backup regularly.","Данные хранятся в этом браузере. Периодически делайте резервную копию (экспорт).","データはこのブラウザに保存されます。定期的にバックアップを書き出してください。"],
+"เพิ่มรายการ":["Add item","Добавить","項目を追加"],
+"เพิ่มมังงะ":["Add manga","Добавить мангу","マンガを追加"],
+"เพิ่มอนิเมะ":["Add anime","Добавить аниме","アニメを追加"],
+"ปิด":["Close","Закрыть","閉じる"],
+"ค้นหาจากฐานข้อมูล":["Search database","Поиск в базе","データベースから検索"],
+"กรอกเอง":["Enter manually","Ввести вручную","手動入力"],
+"พิมพ์ชื่อเรื่อง เช่น Frieren":["Type a title, e.g. Frieren","Введите название, напр. Frieren","タイトルを入力（例：Frieren）"],
+"พิมพ์ชื่อเรื่องเพื่อค้นหา ผลลัพธ์จะขึ้นอัตโนมัติ":["Type a title to search. Results appear automatically.","Введите название — результаты появятся автоматически.","タイトルを入力すると自動で検索します。"],
+"ชื่อเรื่อง":["Title","Название","タイトル"],
+"ปีที่ออก":["Year","Год выпуска","発表年"],
+"อัปโหลดปก":["Upload cover","Загрузить обложку","カバーをアップロード"],
+"หรือวาง URL รูปปก":["Or paste a cover image URL","Или вставьте URL обложки","またはカバー画像のURLを貼り付け"],
+"แก้ไข":["Edit","Изменить","編集"],
+"รายละเอียด":["Details","Подробности","詳細"],
+"สถานะ":["Status","Статус","ステータス"],
+"คะแนน":["Score","Оценка","評価"],
+"ซื้อแล้ว":["Owned","Куплено","購入済み"],
+"จำนวนเล่มที่มี":["Volumes owned","Томов в наличии","所持巻数"],
+"จัดการเล่ม / ดึงปกแต่ละเล่ม":["Manage volumes / fetch covers","Тома / загрузка обложек","巻の管理・カバー取得"],
+"โน้ตส่วนตัว":["Personal notes","Личные заметки","メモ"],
+"ลบ":["Delete","Удалить","削除"],
+"บันทึก":["Save","Сохранить","保存"],
+"เล่มของฉัน":["My volumes","Мои тома","マイ巻リスト"],
+"ชื่อเรื่องสำหรับค้นหาเล่ม":["Title to search volumes","Название для поиска томов","巻を検索するタイトル"],
+"ดึงปกแต่ละเล่ม":["Fetch volume covers","Загрузить обложки томов","各巻のカバーを取得"],
+"ดึงปกจาก MangaDex (ต้องตั้ง proxy) หรือ Google Books ถ้าไม่เจอ ลองเปลี่ยนชื่อเป็นชื่ออังกฤษหรือชื่อไทยตามที่พิมพ์บนหนังสือ":["Covers come from MangaDex (needs the proxy) or Google Books. If nothing is found, try the English or local title printed on the book.","Обложки берутся из MangaDex (нужен прокси) или Google Books. Если ничего не найдено, попробуйте английское или местное название с книги.","カバーはMangaDex（プロキシ必要）またはGoogle Booksから取得します。見つからない場合は、書籍に印刷されている英語名や現地語のタイトルを試してください。"],
+"โควตา Google Books เต็มชั่วคราว รอสักครู่แล้วลองใหม่ หรือใส่ API key ของคุณเองในช่องด้านล่าง":["Google Books quota is temporarily exhausted. Wait a moment and retry, or enter your own API key below.","Квота Google Books временно исчерпана. Подождите и повторите или введите свой API-ключ ниже.","Google Booksの利用上限に一時的に達しました。しばらく待って再試行するか、下欄に自分のAPIキーを入力してください。"],
+"Google Books API key (ไม่บังคับ)":["Google Books API key (optional)","Ключ API Google Books (необязательно)","Google Books APIキー（任意）"],
+"กำลังค้นหาเล่ม…":["Searching volumes…","Поиск томов…","巻を検索中…"],
+"พบ {0} เล่มจาก {1} เล่มที่ไม่มีปกจะแสดงเป็นเลขเล่ม":["Found {0} volumes from {1}. Volumes without a cover show their number.","Найдено томов: {0} ({1}). Тома без обложки показаны номером.","{1}から{0}巻見つかりました。カバーがない巻は番号で表示します。"],
+"(MangaDex ต้องตั้ง proxy ด้านล่างก่อน)":["(MangaDex needs the proxy set below first)","(для MangaDex сначала укажите прокси ниже)","（MangaDexは下のプロキシ設定が必要です）"],
+"MangaDex proxy URL (ไม่บังคับ)":["MangaDex proxy URL (optional)","URL прокси MangaDex (необязательно)","MangaDexプロキシURL（任意）"],
+"ชั้นหนังสือ":["Bookshelf","Книжная полка","本棚"],
+"ยังไม่อ่าน":["Unread","Не прочитано","未読"],
+"อ่านแล้ว":["Read","Прочитано","既読"],
+"เล่มเก่า → ใหม่":["Vol. 1 → latest","Том 1 → новые","1巻 → 最新"],
+"เล่มใหม่ → เก่า":["Latest → vol. 1","Новые → том 1","最新 → 1巻"],
+"จัดการเล่ม":["Manage","Управление","管理"],
+"ยังไม่มีเล่มที่ซื้อ ไปที่มังงะ → จัดการเล่ม → ดึงปก แล้วกด “ซื้อ” ที่เล่มที่มี":["No owned volumes yet. Open a manga → Manage volumes → fetch covers, then press “Own” on the volumes you have.","Купленных томов пока нет. Откройте мангу → Тома → загрузите обложки и нажмите «Куплен» у имеющихся томов.","購入済みの巻はまだありません。マンガ →「巻の管理」→ カバー取得 → 持っている巻で「購入」を押してください。"],
+"ย่อทั้งหมด":["Collapse all","Свернуть все","すべて折りたたむ"],
+"ขยายทั้งหมด":["Expand all","Развернуть все","すべて展開"],
+"มีแล้ว":["Owned","Есть","所持"],
+"ยังไม่มี":["Missing","Нет","未所持"],
+"สถิติ":["Statistics","Статистика","統計"],
+"ตั้งค่า":["Settings","Настройки","設定"],
+"หมวดหมู่":["Category","Категория","カテゴリ"],
+"แท็ก":["Tags","Теги","タグ"],
+"ทุกหมวดหมู่":["All categories","Все категории","すべてのカテゴリ"],
+"ทุกแท็ก":["All tags","Все теги","すべてのタグ"],
+"ไม่มีหมวดหมู่":["No category","Без категории","カテゴリなし"],
+"ยังไม่มีแท็ก กดปุ่มด้านล่างเพื่อสร้าง":["No tags yet. Use the button below to create some.","Тегов пока нет. Создайте их кнопкой ниже.","タグがありません。下のボタンで作成できます。"],
+"จัดการแท็กและหมวดหมู่":["Manage tags & categories","Управление тегами и категориями","タグとカテゴリを管理"],
+"ซิงค์ข้ามเครื่อง":["Sync across devices","Синхронизация между устройствами","デバイス間の同期"],
+"ซิงค์ผ่าน Secret Gist ในบัญชี GitHub ของคุณ สร้างโทเคนแบบ Classic ที่ GitHub → Settings → Developer settings → Personal access tokens (classic) โดยติ๊กสิทธิ์ gist อย่างเดียว แล้ววางโทเคนเดียวกันในทุกเครื่อง":["Syncs through a secret Gist in your GitHub account. Create a classic token at GitHub → Settings → Developer settings → Personal access tokens (classic) with only the gist scope, then paste the same token on every device.","Синхронизация идёт через секретный Gist в вашем аккаунте GitHub. Создайте классический токен: GitHub → Settings → Developer settings → Personal access tokens (classic), только с правом gist, и вставьте один и тот же токен на всех устройствах.","お使いのGitHubアカウントのシークレットGistを使って同期します。GitHub → Settings → Developer settings → Personal access tokens (classic) で gist 権限のみのクラシックトークンを作成し、すべてのデバイスに同じトークンを貼り付けてください。"],
+"โทเคน GitHub (สิทธิ์ gist)":["GitHub token (gist scope)","Токен GitHub (право gist)","GitHubトークン（gist権限）"],
+"ซิงค์ตอนนี้":["Sync now","Синхронизировать","今すぐ同期"],
+"ตัดการเชื่อมต่อ":["Disconnect","Отключить","接続を解除"],
+"หมวดหมู่ใหม่":["New category","Новая категория","新しいカテゴリ"],
+"แท็กใหม่":["New tag","Новый тег","新しいタグ"],
+"+ เพิ่มหมวดหมู่":["+ Add category","+ Добавить категорию","+ カテゴリを追加"],
+"+ เพิ่มแท็ก":["+ Add tag","+ Добавить тег","+ タグを追加"],
+"วางโทเคนก่อน":["Paste a token first","Сначала вставьте токен","先にトークンを貼り付けてください"],
+"กำลังซิงค์…":["Syncing…","Синхронизация…","同期中…"],
+"ซิงค์ล่าสุด {0}":["Last synced {0}","Последняя синхронизация: {0}","最終同期：{0}"],
+"ยังไม่ได้เชื่อมต่อ":["Not connected","Не подключено","未接続"],
+"ซิงค์ไม่สำเร็จ ({0})":["Sync failed ({0})","Ошибка синхронизации ({0})","同期に失敗しました（{0}）"],
+"โทเคนไม่ถูกต้อง หมดอายุ หรือไม่มีสิทธิ์ gist":["Token is invalid, expired, or lacks the gist scope","Токен недействителен, просрочен или без права gist","トークンが無効・期限切れ、またはgist権限がありません"],
+"ยังไม่มีข้อมูลสำหรับสถิติ":["No data for statistics yet.","Данных для статистики пока нет.","統計のデータがまだありません。"],
+"รายการทั้งหมด":["Total titles","Всего тайтлов","登録数"],
+"อัตราที่จบแล้ว":["Completion rate","Доля завершённых","完了率"],
+"สัดส่วนตามสถานะ":["By status","По статусам","ステータス別"],
+"การกระจายคะแนน":["Score distribution","Распределение оценок","評価の分布"],
+"เพิ่มต่อเดือน (12 เดือนล่าสุด)":["Added per month (last 12 months)","Добавлено по месяцам (12 мес.)","月別の追加数（直近12か月）"],
+"ตามหมวดหมู่ (จำนวน · คะแนนเฉลี่ย)":["By category (count · avg. score)","По категориям (кол-во · ср. оценка)","カテゴリ別（件数・平均評価）"],
+"ตามแท็ก (จำนวน · คะแนนเฉลี่ย)":["By tag (count · avg. score)","По тегам (кол-во · ср. оценка)","タグ別（件数・平均評価）"],
+"สร้างหมวดหมู่และแท็กได้ในตั้งค่า (ปุ่ม ⚙ ด้านบน)":["Create categories and tags in Settings (the ⚙ button at the top).","Категории и теги создаются в настройках (кнопка ⚙ вверху).","カテゴリとタグは設定（上の ⚙ ボタン）で作成できます。"],
+"หนังสืออื่นๆ":["Other books","Другие книги","その他の本"],
+"เพิ่มหนังสือ":["Add book","Добавить книгу","本を追加"],
+"ผู้แต่ง":["Author","Автор","著者"],
+"ยังไม่มีหนังสือในรายการ กด “+ เพิ่มรายการ” เพื่อเริ่มต้น":["No books yet. Press “+ Add” to start.","Книг пока нет. Нажмите «+ Добавить», чтобы начать.","本はまだありません。「+ 追加」から始めましょう。"],
+"ติ๊ก “อ่าน” ครบทุกเล่ม":["Mark all as read","Отметить все как прочитанные","全巻を既読にする"],
+"ชั้นหนังสือยังว่าง ดึงปกเล่มของมังงะ (จัดการเล่ม) หรือเพิ่มหนังสืออื่นๆ ก่อน":["The shelf is empty. Fetch manga volume covers (Manage volumes) or add other books first.","Полка пуста. Загрузите обложки томов манги («Тома») или добавьте другие книги.","本棚は空です。マンガの巻カバーを取得するか（巻の管理）、その他の本を追加してください。"],
+"ปก":["Cover","Обложка","表紙"],
+"ปกเล่ม {0}":["Volume {0} cover","Обложка тома {0}","{0}巻のカバー"],
+"วาง URL รูปปก":["Paste cover image URL","Вставьте URL обложки","カバー画像のURLを貼り付け"],
+"หรืออัปโหลดรูปปก":["Or upload a cover image","Или загрузите изображение","または画像をアップロード"],
+"ตั้งเป็นปกหลักของเรื่อง":["Set as main cover","Сделать главной обложкой","メイン表紙に設定"],
+"ใช้ปกหลักตามค่ารวม":["Use global main-cover setting","Использовать общую настройку","共通設定のメイン表紙に戻す"],
+"ลบปกเล่มนี้":["Remove this cover","Удалить эту обложку","この表紙を削除"],
+"บันทึกปก":["Save cover","Сохранить обложку","表紙を保存"],
+"เล่มนี้คือปกหลักของเรื่อง":["This is the main cover of the series","Это главная обложка серии","この巻がシリーズのメイン表紙です"],
+"ยังไม่มีรูปปก ใส่ URL หรืออัปโหลดรูปก่อน":["No image yet. Enter a URL or upload one first.","Нет изображения. Укажите URL или загрузите файл.","画像がありません。URLを入力するかアップロードしてください。"],
+"ตั้งเป็นปกหลักแล้ว":["Main cover set","Главная обложка задана","メイン表紙に設定しました"],
+"ปกหลักในหน้ารายการ":["Main cover in lists","Главная обложка в списках","リストのメイン表紙"],
+"ปกจากฐานข้อมูล (ค่าเริ่มต้น)":["Database cover (default)","Обложка из базы (по умолчанию)","データベースの表紙（既定）"],
+"ปกเล่ม 1 (เล่มเลขน้อยสุดที่มีปก)":["Volume 1 cover (lowest volume with a cover)","Обложка тома 1 (наименьший том с обложкой)","1巻の表紙（表紙のある最小の巻）"],
+"ปกเล่มล่าสุดที่ซื้อ":["Latest owned volume cover","Обложка последнего купленного тома","最新の所持巻の表紙"],
+"ใช้กับมังงะที่ดึงปกรายเล่มไว้แล้ว เรื่องที่ตั้งปกหลักเองไว้จะไม่ถูกเปลี่ยน":["Applies to manga with volume covers. Series with a manually set main cover are not changed.","Применяется к манге с обложками томов. Серии с вручную заданной главной обложкой не меняются.","巻ごとの表紙を取得したマンガに適用されます。メイン表紙を手動で設定した作品は変わりません。"],
+"ขาด {0}":["Missing {0}","Не хватает: {0}","あと{0}巻"],
+"ครบแล้ว":["Complete","Полный комплект","コンプリート"],
+"ถัดไปเล่ม {0}":["Next: vol. {0}","Далее: том {0}","次は{0}巻"],
+"ราคาปกต่อเล่ม (฿)":["Cover price per volume (฿)","Цена обложки за том (฿)","1巻あたりの定価（฿）"],
+"ราคาที่จ่ายต่อเล่ม (฿)":["Paid per volume (฿)","Оплачено за том (฿)","1巻あたりの支払額（฿）"],
+"ราคาปกเล่มนี้ (฿)":["Cover price of this volume (฿)","Цена обложки этого тома (฿)","この巻の定価（฿）"],
+"ราคาที่จ่ายเล่มนี้ (฿)":["Paid for this volume (฿)","Оплачено за этот том (฿)","この巻の支払額（฿）"],
+"วันที่ซื้อ":["Purchase date","Дата покупки","購入日"],
+"ซื้อเล่มถัดไป":["Buy next volume","Купить следующий том","次の巻を購入"],
+"ซื้อเล่ม {0} แล้ว":["Volume {0} marked as bought","Том {0} отмечен купленным","{0}巻を購入済みにしました"],
+"ครบทุกเล่มแล้ว":["All volumes owned","Все тома есть","全巻そろっています"],
+"แก้ไขเล่ม {0}":["Edit volume {0}","Изменить том {0}","{0}巻を編集"],
+"จ่ายรวม {0}":["Spent {0}","Потрачено {0}","支出 {0}"],
+"สรุปรายจ่าย":["Spending summary","Сводка расходов","支出サマリー"],
+"6 เดือน":["6 months","6 месяцев","6か月"],
+"12 เดือน":["12 months","12 месяцев","12か月"],
+"ราคาปกรวม":["Total cover price","Сумма по обложкам","定価合計"],
+"ประหยัดได้":["Saved","Сэкономлено","節約額"],
+"เฉลี่ยต่อเดือน":["Avg per month","В среднем в месяц","月平均"],
+"เฉลี่ยต่อเล่ม":["Avg per volume","В среднем за том","1巻平均"],
+"ยังไม่มีข้อมูลราคา ใส่ราคาในหน้าจัดการเล่ม (ช่องราคาด้านบน หรือปุ่ม ✎ ของแต่ละเล่ม)":["No price data yet. Enter prices in Manage volumes (the price fields at the top, or the ✎ button on each volume).","Данных о ценах пока нет. Укажите цены в разделе «Тома» (поля сверху или кнопка ✎ у тома).","価格データがありません。「巻の管理」で価格を入力してください（上の入力欄、または各巻の ✎ ボタン）。"],
+"{0} เล่มที่ซื้อไว้ไม่มีวันที่ จึงไม่นับในช่วงนี้ (ตั้งวันที่ได้ที่ปุ่ม ✎ ของแต่ละเล่ม)":["{0} owned volumes have no purchase date and are not counted in this range (set it with the ✎ button on each volume).","{0} купленных томов без даты не учитываются в этом периоде (дату можно задать кнопкой ✎ у тома).","購入日のない{0}冊はこの期間に含まれません（各巻の ✎ ボタンで設定できます）。"],
+"มีในชั้นแล้ว {0} เล่ม":["{0} vol. already on your shelf","Уже на полке: {0} т.","本棚に{0}巻あり"],
+"อยู่ในรายการแล้ว":["Already in your list","Уже в списке","リストに登録済み"],
+"หาไม่เจอ? บันทึกด้วยตัวเอง":["Can't find it? Add it manually","Не нашли? Добавьте вручную","見つからない？手動で追加"],
+"กรอกชื่อ ปี และปกเองได้เลย":["Enter the title, year and cover yourself","Укажите название, год и обложку сами","タイトル・年・表紙を自分で入力できます"],
+"สำนักพิมพ์":["Publisher","Издательство","出版社"],
+"อยากได้":["Wanted","Хочу","欲しい"],
+"อยากได้ (Wishlist)":["Want (Wishlist)","Хочу (Wishlist)","欲しい（Wishlist）"],
+"จ่ายไป":["Paid","Потрачено","支払い"],
+"เล่มถัดไปที่ต้องซื้อ: เล่ม {0}":["Next volume to buy: vol. {0}","Следующий том к покупке: {0}","次に買う巻：{0}巻"],
+"+ ซื้อเล่ม {0}":["+ Buy vol. {0}","+ Купить том {0}","+ {0}巻を購入"],
+"ใส่เล่มที่ยังขาดทั้งหมดใน Wishlist":["Add all missing volumes to Wishlist","Добавить все недостающие тома в Wishlist","不足している巻をすべてWishlistに追加"],
+"เพิ่ม Wishlist {0} เล่ม":["Added {0} volumes to Wishlist","Добавлено в Wishlist: {0}","Wishlistに{0}巻を追加しました"],
+"การอ่าน":["Reading","Чтение","読書"],
+"อ่านแล้ว {0} / {1} เล่ม":["Read {0} / {1} vol.","Прочитано {0} / {1} т.","既読 {0} / {1}巻"],
+"ยังไม่มีรายการเล่ม กด “จัดการเล่ม” เพื่อดึงปกหรือสร้างเล่ม":["No volumes yet. Press “Manage” to fetch covers or create volumes.","Томов пока нет. Нажмите «Управление», чтобы загрузить обложки или создать тома.","まだ巻がありません。「管理」でカバーを取得するか巻を作成してください。"],
+"รอซื้ออยู่ ♡":["Waiting to buy ♡","Хочу купить ♡","購入待ち ♡"],
+"{0} เรื่อง":["{0} series","Серий: {0}","{0}作品"],
+"งบประมาณ ~{0}":["Budget ~{0}","Бюджет ~{0}","予算 ~{0}"],
+"ไม่ระบุสำนักพิมพ์":["No publisher","Без издателя","出版社なし"],
+"แยกตามสำนักพิมพ์":["By publisher","По издательствам","出版社別"],
+"Wishlist ยังว่างอยู่ เปิดหน้ารายละเอียดของมังงะ แล้วกด ♡ ที่เล่มที่อยากได้ หรือกด “ใส่เล่มที่ยังขาดทั้งหมดใน Wishlist”":["Your Wishlist is empty. Open a manga’s detail page and press ♡ on the volumes you want, or use “Add all missing volumes to Wishlist”.","Wishlist пуст. Откройте страницу манги и нажмите ♡ у нужных томов или «Добавить все недостающие тома в Wishlist».","Wishlistは空です。マンガの詳細ページで欲しい巻の ♡ を押すか、「不足している巻をすべてWishlistに追加」を使ってください。"],
+"ชื่อต้นฉบับ: {0}":["Original title: {0}","Оригинальное название: {0}","原題：{0}"],
+"ใช้ชื่อเดิม":["Use original title","Вернуть оригинальное название","原題に戻す"],
+"สัดส่วนสถานะ":["Status breakdown","Статусы","ステータス内訳"],
+"รายการ":["items","шт.","件"],
+"ยังไม่มีข้อมูล":["No data yet","Нет данных","データなし"],
+"ต้องซื้อต่อ":["Next to buy","Купить дальше","次に買う"],
+"ชื่อคลังและแบนเนอร์":["Library name & banner","Название и баннер","ライブラリ名とバナー"],
+"ชื่อคลัง":["Library name","Название библиотеки","ライブラリ名"],
+"ข้อความใต้ชื่อ (ไม่บังคับ)":["Tagline (optional)","Подзаголовок (необязательно)","サブタイトル（任意）"],
+"อัปโหลดรูปแบนเนอร์":["Upload banner image","Загрузить баннер","バナー画像をアップロード"],
+"หรือวาง URL รูปแบนเนอร์":["Or paste a banner image URL","Или вставьте URL баннера","またはバナー画像のURLを貼り付け"],
+"ล้างรูปแบนเนอร์":["Remove banner image","Убрать баннер","バナー画像を削除"],
+"แสดงแบนเนอร์":["Show banner","Показывать баннер","バナーを表示"],
+"รูปที่อัปโหลดเก็บเฉพาะเครื่องนี้ ส่วนชื่อ ข้อความ และ URL รูปซิงค์ข้ามเครื่องตามปกติ แนะนำภาพกว้างราว 1600×300px":["Uploaded images are stored on this device only. The name, tagline and image URL sync across devices. A wide image of about 1600×300px works best.","Загруженные изображения хранятся только на этом устройстве. Название, подзаголовок и URL синхронизируются. Лучше всего подходит широкое изображение около 1600×300 px.","アップロードした画像はこの端末にのみ保存されます。名前・サブタイトル・画像URLは端末間で同期されます。幅1600×300px程度の横長画像がおすすめです。"],
+"สวัสดีตอนเช้า":["Good morning","Доброе утро","おはようございます"],
+"สวัสดีตอนบ่าย":["Good afternoon","Добрый день","こんにちは"],
+"สวัสดีตอนเย็น":["Good evening","Добрый вечер","こんばんは"],
+"สวัสดีตอนกลางคืน":["Good night","Доброй ночи","こんばんは"],
+"ขอให้สนุกกับการอ่านวันนี้":["Enjoy your reading today","Приятного чтения сегодня","今日も楽しい読書を"],
+"กำลังอ่าน/ดู":["In progress","В процессе","進行中"],
+"อยากอ่าน/ดู":["Plan to read/watch","В планах","予定"],
+"ชื่อของคุณ (ใช้ทักทาย)":["Your name (for the greeting)","Ваше имя (для приветствия)","お名前（あいさつ用）"],
+"อัปโหลดรูปประกอบแถบซ้าย":["Upload sidebar illustration","Загрузить картинку для боковой панели","サイドバー画像をアップロード"],
+"หรือวาง URL รูปแถบซ้าย":["Or paste a sidebar image URL","Или вставьте URL картинки","またはサイドバー画像のURLを貼り付け"],
+"ล้างรูปแถบซ้าย":["Remove sidebar image","Убрать картинку","サイドバー画像を削除"],
+"ทุกสำนักพิมพ์":["All publishers","Все издательства","すべての出版社"],
+"เพิ่มสำนักพิมพ์":["Add publisher","Добавить издательство","出版社を追加"],
+"+ เพิ่มสำนักพิมพ์":["+ Add publisher","+ Добавить издательство","+ 出版社を追加"],
+"สำนักพิมพ์ใหม่":["New publisher","Новое издательство","新しい出版社"],
+"ชื่อสำนักพิมพ์ใหม่":["New publisher name","Название нового издательства","新しい出版社名"],
+"ธีม":["Themes","Темы","テーマ"],
+"ทุกธีม":["All themes","Все темы","すべてのテーマ"],
+"ธีมใหม่":["New theme","Новая тема","新しいテーマ"],
+"+ เพิ่มธีม":["+ Add theme","+ Добавить тему","+ テーマを追加"],
+"ไม่มีธีม":["No theme","Без темы","テーマなし"],
+"ยังไม่มีธีม กดปุ่มด้านล่างเพื่อสร้าง":["No themes yet. Use the button below to create one.","Тем пока нет. Создайте их кнопкой ниже.","テーマがありません。下のボタンで作成してください。"],
+"จัดการธีม แท็ก และ Demographic":["Manage themes, tags & demographics","Управление темами, тегами и аудиторией","テーマ・タグ・対象層を管理"],
+"Demographic":["Demographic","Целевая аудитория","対象層"],
+"ทุก Demographic":["All demographics","Вся аудитория","すべての対象層"],
+"Demographic ใหม่":["New demographic","Новая аудитория","新しい対象層"],
+"+ เพิ่ม Demographic":["+ Add demographic","+ Добавить аудиторию","+ 対象層を追加"],
+"ไม่ระบุ":["Not set","Не указано","未設定"],
+"ตามธีม (จำนวน · คะแนนเฉลี่ย)":["By theme (count · avg. score)","По темам (кол-во · ср. оценка)","テーマ別（件数・平均評価）"],
+"ตาม Demographic (จำนวน · คะแนนเฉลี่ย)":["By demographic (count · avg. score)","По аудитории (кол-во · ср. оценка)","対象層別（件数・平均評価）"],
+"สร้างธีม แท็ก และ Demographic ได้ในตั้งค่า (ปุ่ม ⚙ ด้านซ้ายล่าง)":["Create themes, tags and demographics in Settings (the ⚙ button at the bottom left).","Темы, теги и аудиторию можно создать в настройках (кнопка ⚙ внизу слева).","テーマ・タグ・対象層は設定（左下の ⚙ ボタン）で作成できます。"],
+"จำนวนเล่ม":["Total volumes","Всего томов","総巻数"],
+"สร้างเล่ม 1–N":["Create vol. 1–N","Создать тома 1–N","1〜N巻を作成"],
+"ติ๊ก “ซื้อ” ครบทุกเล่ม":["Mark all as owned","Отметить все как купленные","全巻を購入済みにする"],
+"เสร็จ":["Done","Готово","完了"],
+"ทั้งหมด":["All","Все","すべて"],
+"คะแนนเฉลี่ย":["Average score","Средняя оценка","平均評価"],
+"เล่มที่มี":["Volumes owned","Томов в наличии","所持巻数"],
+"อยากอ่าน":["Plan to read","Хочу прочитать","読みたい"],
+"กำลังอ่าน":["Reading","Читаю","読書中"],
+"อ่านจบ":["Completed","Прочитано","読了"],
+"ดร็อป":["Dropped","Брошено","中断"],
+"อยากดู":["Plan to watch","Хочу посмотреть","観たい"],
+"กำลังดู":["Watching","Смотрю","視聴中"],
+"ดูจบ":["Completed","Просмотрено","視聴済み"],
+"ไม่พบรายการที่ตรงกับตัวกรอง":["No items match your filters.","Нет элементов по заданным фильтрам.","条件に一致する項目がありません。"],
+"ยังไม่มีมังงะในรายการ กด “+ เพิ่มรายการ” เพื่อเริ่มต้น":["No manga yet. Press “+ Add” to start.","Манги пока нет. Нажмите «+ Добавить», чтобы начать.","マンガはまだありません。「+ 追加」から始めましょう。"],
+"ยังไม่มีอนิเมะในรายการ กด “+ เพิ่มรายการ” เพื่อเริ่มต้น":["No anime yet. Press “+ Add” to start.","Аниме пока нет. Нажмите «+ Добавить», чтобы начать.","アニメはまだありません。「+ 追加」から始めましょう。"],
+"ดูแล้ว {0}/{1} ตอน":["Watched {0}/{1} ep.","Просмотрено {0}/{1} эп.","{0}/{1}話視聴"],
+"อ่านถึงเล่ม {0}":["Read up to vol. {0}","Прочитано до тома {0}","{0}巻まで読了"],
+"มี {0} เล่ม":["Own {0} vol.","В наличии: {0} т.","所持 {0}巻"],
+"ปก {0}":["Cover of {0}","Обложка: {0}","{0} のカバー"],
+"ไม่ทราบปี":["Year unknown","Год неизвестен","発表年不明"],
+"{0} ตอน":["{0} ep.","{0} эп.","全{0}話"],
+"{0} เล่ม":["{0} vol.","{0} т.","全{0}巻"],
+"พิมพ์อย่างน้อย 2 ตัวอักษร":["Type at least 2 characters","Введите минимум 2 символа","2文字以上入力してください"],
+"กำลังค้นหา…":["Searching…","Поиск…","検索中…"],
+"แหล่งที่เลือกใช้ไม่ได้ ใช้ {0} แทน":["Selected source unavailable, using {0} instead","Выбранный источник недоступен, используется {0}","選択したソースが使えないため {0} を使用しました"],
+"ไม่พบผลลัพธ์ ลองชื่อภาษาอังกฤษหรือโรมาจิ หรือใช้แท็บ “กรอกเอง”":["No results. Try the English or romaji title, or use the “Enter manually” tab.","Ничего не найдено. Попробуйте английское название или ромадзи, либо вкладку «Ввести вручную».","見つかりません。英語名やローマ字で試すか、「手動入力」タブを使ってください。"],
+"ค้นหาไม่สำเร็จ ({0}) ถ้าเปิดไฟล์ในหน้าแสดงตัวอย่างของแชต ให้ดาวน์โหลดแล้วเปิดในเบราว์เซอร์โดยตรง หรือกรอกเอง":["Search failed ({0}). If you opened this file in a chat preview, download it and open it directly in your browser, or enter the item manually.","Поиск не удался ({0}). Если вы открыли файл в предпросмотре чата, скачайте его и откройте прямо в браузере или добавьте вручную.","検索に失敗しました（{0}）。チャットのプレビューで開いている場合は、ダウンロードしてブラウザで直接開くか、手動で入力してください。"],
+"ยังไม่ให้คะแนน":["No score","Без оценки","未評価"],
+"ตอนที่ดูแล้ว":["Episodes watched","Просмотрено серий","視聴済みの話数"],
+"เล่มล่าสุดที่อ่าน":["Latest volume read","Последний прочитанный том","最後に読んだ巻"],
+"ตอนทั้งหมด":["Total episodes","Всего серий","総話数"],
+"จำนวนเล่มทั้งหมด":["Total volumes","Всего томов","総巻数"],
+"ลบรายการนี้?":["Delete this item?","Удалить этот элемент?","この項目を削除しますか？"],
+"เพิ่มแล้ว":["Added","Добавлено","追加しました"],
+"มีรายการนี้อยู่แล้ว":["Already in your list","Уже в списке","すでにリストにあります"],
+"กรุณากรอกชื่อเรื่อง":["Please enter a title","Введите название","タイトルを入力してください"],
+"อ่านรูปไม่ได้":["Could not read the image","Не удалось прочитать изображение","画像を読み込めませんでした"],
+"บันทึกแล้ว":["Saved","Сохранено","保存しました"],
+"ลบแล้ว":["Deleted","Удалено","削除しました"],
+"ไฟล์ไม่ถูกต้อง":["Invalid file","Недопустимый файл","無効なファイルです"],
+"นำเข้า {0} รายการ":["Imported {0} items","Импортировано: {0}","{0}件を読み込みました"],
+"บันทึกไม่ได้ พื้นที่เบราว์เซอร์เต็ม":["Could not save: browser storage is full","Не удалось сохранить: хранилище браузера заполнено","保存できません：ブラウザの容量がいっぱいです"],
+"ใส่จำนวนเล่มก่อน":["Enter the number of volumes first","Сначала укажите число томов","先に巻数を入力してください"],
+"เล่มของ {0}":["Volumes of {0}","Тома: {0}","{0} の巻"],
+"เล่ม {0}":["Vol. {0}","Т. {0}","{0}巻"],
+"ซื้อ":["Own","Куплен","購入"],
+"อ่าน":["Read","Прочит.","既読"],
+"ยังไม่มีเล่ม กด “ดึงปกแต่ละเล่ม” หรือใส่จำนวนเล่มแล้วกด “สร้างเล่ม 1–N”":["No volumes yet. Press “Fetch volume covers”, or enter a count and press “Create vol. 1–N”.","Томов пока нет. Нажмите «Загрузить обложки томов» или укажите число и нажмите «Создать тома 1–N».","まだ巻がありません。「各巻のカバーを取得」か、巻数を入力して「1〜N巻を作成」を押してください。"],
+"กำลังค้นหาเล่มจาก Google Books…":["Searching Google Books…","Поиск в Google Books…","Google Booksを検索中…"],
+"พบ {0} รายการ ปกที่ไม่เจอจะเป็นเลขเล่มแทน":["Found {0} items. Volumes without a cover show their number.","Найдено: {0}. Тома без обложки показаны номером.","{0}件見つかりました。カバーがない巻は番号で表示します。"],
+"ไม่พบเล่ม ลองเปลี่ยนชื่อ (ชื่ออังกฤษหรือชื่อไทยบนหนังสือ) หรือสร้างเล่มด้วยจำนวนเล่ม":["No volumes found. Try another title (English or the one printed on the book), or create volumes by count.","Тома не найдены. Попробуйте другое название (английское или с книги) или создайте тома по количеству.","巻が見つかりません。別のタイトル（英語名や書籍の表記）を試すか、巻数から作成してください。"],
+"ค้นหาไม่สำเร็จ ({0}) ลองใหม่ภายหลัง หรือสร้างเล่มด้วยจำนวนเล่ม":["Search failed ({0}). Try again later, or create volumes by count.","Поиск не удался ({0}). Повторите позже или создайте тома по количеству.","検索に失敗しました（{0}）。後でもう一度試すか、巻数から作成してください。"]
+};
+function tr(k,...a){const v=DICT[k],x=v&&v[LI[S.lang]];return(x||k).replace(/\{(\d)\}/g,(_,n)=>a[n]??'')}
+function applyStatic(){
+  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;
+  while(n=w.nextNode()){
+    if(n.parentElement.closest('script'))continue;
+    if(n._th===undefined){const m=n.nodeValue.match(/^(\s*)([\s\S]*?)(\s*)$/);n._th=m[2];n._ws=[m[1],m[3]]}
+    if(n._th&&DICT[n._th])n.nodeValue=n._ws[0]+tr(n._th)+n._ws[1];
+  }
+  document.querySelectorAll('[placeholder],[aria-label]').forEach(e=>{
+    e._th=e._th||{};
+    for(const a of['placeholder','aria-label'])if(e.hasAttribute(a)){if(e._th[a]===undefined)e._th[a]=e.getAttribute(a);if(DICT[e._th[a]])e.setAttribute(a,tr(e._th[a]))}
+  });
+  document.title=tr('คลังมังงะ & อนิเมะของฉัน');document.documentElement.lang=S.lang;
+}
+
+/* ---------- ชั้น API (เปลี่ยนแหล่งข้อมูลได้ที่ SOURCES) ---------- */
+const cache=new Map(); let lastCall=0;
+async function getJSON(url,slow){
+  if(cache.has(url))return cache.get(url);
+  if(slow){const w=Math.max(0,lastCall+400-Date.now());lastCall=Date.now()+w;if(w)await sleep(w)}  // Jikan ~3 req/s
+  let r=await fetch(url);
+  if(r.status===429){await sleep(1300);r=await fetch(url)}
+  if(!r.ok)throw new Error('HTTP '+r.status);
+  const j=await r.json();cache.set(url,j);return j;
+}
+const jikan=type=>async q=>{
+  const j=await getJSON(`https://api.jikan.moe/v4/${type}?q=${encodeURIComponent(q)}&limit=10&sfw=true`,true);
+  return j.data.map(x=>({src:'jikan',srcId:String(x.mal_id),title:x.title_english||x.title,alt:x.title_japanese||'',
+    cover:x.images?.jpg?.large_image_url||x.images?.jpg?.image_url||'',
+    year:x.year||x.aired?.prop?.from?.year||x.published?.prop?.from?.year||'',
+    total:(type==='anime'?x.episodes:x.volumes)||0}));
+};
+const anilist=type=>async q=>{
+  const key='AL|'+type+'|'+q;if(cache.has(key))return cache.get(key);
+  const query='query($q:String,$t:MediaType){Page(perPage:10){media(search:$q,type:$t,sort:SEARCH_MATCH){id title{english romaji native} coverImage{large} startDate{year} episodes volumes}}}';
+  const r=await fetch('https://graphql.anilist.co',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({query,variables:{q,t:type.toUpperCase()}})});
+  if(!r.ok)throw new Error('HTTP '+r.status);
+  const j=await r.json();
+  const rows=j.data.Page.media.map(x=>({src:'anilist',srcId:String(x.id),title:x.title.english||x.title.romaji,alt:x.title.native||'',
+    cover:x.coverImage?.large||'',year:x.startDate?.year||'',total:(type==='anime'?x.episodes:x.volumes)||0}));
+  cache.set(key,rows);return rows;
+};
+async function mangadex(q){
+  const j=await getJSON(`${mdBase()}/manga?title=${encodeURIComponent(q)}&limit=10&includes[]=cover_art&order[relevance]=desc`);
+  return j.data.map(x=>{
+    const a=x.attributes,t=a.title||{},file=x.relationships.find(r=>r.type==='cover_art')?.attributes?.fileName;
+    const jaAlt=(a.altTitles||[]).find(o=>o.ja||o['ja-ro']);
+    return{src:'mangadex',srcId:x.id,title:t.en||Object.values(t)[0]||'(ไม่มีชื่อ)',alt:jaAlt?(jaAlt.ja||jaAlt['ja-ro']):'',
+      cover:file?`https://uploads.mangadex.org/covers/${x.id}/${file}.256.jpg`:'',year:a.year||'',total:parseInt(a.lastVolume)||0};
+  });
+}
+const SOURCES={
+  // เปิดใช้ MangaDex/Jikan อีกครั้งได้โดยเพิ่ม {id:'mangadex',name:'MangaDex',search:mangadex} / {id:'jikan',name:'MyAnimeList',search:jikan('manga')}
+  anime:[{id:'anilist',name:'AniList',search:anilist('anime')}],
+  manga:[{id:'anilist',name:'AniList',search:anilist('manga')}]
+};
+async function searchAll(type,q,prefId){
+  const list=SOURCES[type].slice().sort((a,b)=>(b.id===prefId)-(a.id===prefId));
+  const errs=[];
+  for(const s of list){
+    try{return{rows:await s.search(q),via:s.name,fallback:s.id!==prefId}}catch(e){errs.push(s.name+': '+e.message)}
+  }
+  throw new Error(errs.join(' | '));
+}
+
+/* ---------- แสดงผล ---------- */
+const cur=()=>S.tab;
+let fCat='',fTag='',fPub='',fDemo='';
+function visible(){
+  const q=$('#q').value.trim().toLowerCase();
+  let a=S.items.filter(i=>i.type===cur()&&(filter==='all'||i.status===filter)&&(!fCat||(i.themes||[]).includes(fCat))&&(!fDemo||i.demo===fDemo)&&(!fTag||(i.tags||[]).includes(fTag))&&(!fPub||cur()==='anime'||i.pub===fPub)&&(!q||(i.title+' '+(i.orig||'')+' '+(i.author||'')+' '+(i.alt||'')+' '+(i.note||'')).toLowerCase().includes(q)));
+  const so=$('#sort').value;
+  if(so==='title')a.sort((x,y)=>x.title.localeCompare(y.title,S.lang));
+  else if(so==='score')a.sort((x,y)=>y.score-x.score);
+  else a.sort((x,y)=>y.added-x.added);
+  return a;
+}
+// ปกหลักของรายการ: ปกที่ตั้งเอง (coverPin) > ตามค่ารวม (cfg.coverMode) > ปกจากฐานข้อมูล
+function coverOf(i){
+  if(i.type==='manga'){
+    if(i.coverPin)return i.coverPin;
+    const m=S.cfg.coverMode,l=(i.volList||[]).filter(v=>v.cover);
+    if(m==='first'&&l.length)return l.reduce((a,b)=>b.n<a.n?b:a).cover;
+    if(m==='latest'){const o=l.filter(v=>v.own);if(o.length)return o.reduce((a,b)=>b.n>a.n?b:a).cover}
+  }
+  return i.cover||'';
+}
+const num=x=>{const n=parseFloat(x);return isFinite(n)?n:null};
+const money=n=>'฿'+Math.round(n).toLocaleString({th:'th-TH',ru:'ru-RU',ja:'ja-JP'}[S.lang]||'en-US');
+const today=()=>{const d=new Date(),p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`};
+// ราคาต่อเล่ม: ราคาปก / ราคาที่จ่ายจริง (ไม่ได้กรอกราคาจ่าย = จ่ายเท่าราคาปก)
+function volPrice(i,v){const pc=num(v.pc)??num(i.priceCover),paid=num(v.paid)??num(i.pricePaid)??pc;return{pc,paid}}
+// เล่มที่มี/ขาด/เล่มถัดไป
+function volStat(i){
+  const l=i.volList||[],total=Math.max(+i.total||0,...l.map(v=>v.n),0),have=new Set(l.filter(v=>v.own).map(v=>v.n));
+  let next=0;for(let n=1;n<=total;n++)if(!have.has(n)){next=n;break}
+  return{total,own:have.size,missing:Math.max(0,total-have.size),next};
+}
+const mpHtml=i=>{if(i.type!=='manga'||!(i.volList||[]).length)return'';const s=volStat(i);return s.missing?`<span class="mp">${tr('ขาด {0}',s.missing)}</span>`:''};
+const nxHtml=i=>{if(i.type!=='manga'||!(i.volList||[]).length)return'';const s=volStat(i);return s.next?`<div class="nx">${tr('ถัดไปเล่ม {0}',s.next)}</div>`:''};
+const smHtml=i=>{const s=volStat(i);if(!s.total)return'';return `<span class="sm">${s.missing?`<em class="mp2">${tr('ขาด {0}',s.missing)}</em>`:`<em class="ok">${tr('ครบแล้ว')}</em>`}${s.next?`<span>${tr('ถัดไปเล่ม {0}',s.next)}</span>`:''}<i class="pb"><b style="width:${Math.round(s.own/s.total*100)}%"></b></i></span>`};
+const setOwnDate=v=>{if(v.own){if(!v.date)v.date=today();v.wish=false}};
+function sub(i){
+  if(i.type==='anime')return tr('ดูแล้ว {0}/{1} ตอน',i.progress||0,i.total||'?');
+  const st=(i.volList||[]).length?volStat(i):null;
+  return tr('อ่านถึงเล่ม {0}',(i.progress||0)+(i.total?'/'+i.total:''))+(st?' · '+tr('มี {0} เล่ม',st.own)+(st.missing?' · '+tr('ขาด {0}',st.missing):''):(i.owned?' · '+tr('มี {0} เล่ม',i.vols||0):''));
+}
+function renderBrand(){
+  const nm=S.cfg.libName||tr('คลังของฉัน');
+  $('#libName').textContent=nm;$('#bName').textContent=nm;$('#bTag').textContent=S.cfg.tagline||'';
+  document.title=S.cfg.libName||tr('คลังมังงะ & อนิเมะของฉัน');
+  const b=$('#banner'),src=S.banner||S.cfg.bannerUrl||'';
+  b.style.display=S.bannerOff?'none':'';
+  if(src){b.style.backgroundImage=`url("${src.replace(/["\\\n\r]/g,c=>encodeURIComponent(c))}")`;b.classList.add('has')}
+  else{b.style.backgroundImage='';b.classList.remove('has')}
+  const na=S.navImg||S.cfg.navImgUrl||'',nb=$('#navArt');
+  nb.hidden=!na;nb.innerHTML=na?`<img src="${esc(na)}" alt="" onerror="this.parentNode.hidden=true">`:'';
+}
+function renderGreet(on){
+  const g=$('#greet');if(!on){g.innerHTML='';return}
+  const hr=new Date().getHours(),k=hr>=5&&hr<12?'สวัสดีตอนเช้า':hr>=12&&hr<17?'สวัสดีตอนบ่าย':hr>=17&&hr<21?'สวัสดีตอนเย็น':'สวัสดีตอนกลางคืน';
+  let vols=0,doing=0,plan=0;const sc=[];
+  for(const i of S.items){
+    if(i.type==='manga')vols+=(i.volList||[]).length?volStat(i).own:(i.owned?i.vols||0:0);
+    if(i.status==='doing')doing++;if(i.status==='want')plan++;if(i.score>0)sc.push(i.score);
+  }
+  const avg=sc.length?(sc.reduce((a,b)=>a+b,0)/sc.length).toFixed(1):'-',nm=S.cfg.userName;
+  const t=(n,l)=>`<div class="tile"><b>${n}</b><span>${tr(l)}</span></div>`;
+  g.innerHTML=`<div class="greet"><div><div class="gs">${tr(k)}${nm?',':''}</div>${nm?`<div class="gn">${esc(nm)}</div>`:''}<div class="gt">${tr('ขอให้สนุกกับการอ่านวันนี้')}</div></div><div class="gk">${t(vols,'เล่มที่มี')}${t(doing,'กำลังอ่าน/ดู')}${t(plan,'อยากอ่าน/ดู')}${t(avg,'คะแนนเฉลี่ย')}</div></div>`;
+}
+function render(){
+  document.documentElement.dataset.theme=S.theme;renderBrand();
+  $('#theme').textContent=tr(S.theme==='dark'?'โหมดสว่าง':'โหมดมืด');
+  $('#view').textContent=tr(S.view==='grid'?'มุมมองรายการ':'มุมมองปก');
+  for(const t of ['manga','anime','book','shelf','wish','stats'])$('#tab-'+t).setAttribute('aria-selected',String(S.tab===t));
+  const sh=['shelf','stats','wish'].includes(S.tab);
+  $('#split').classList.toggle('nosd',sh);$('#side').style.display=sh?'none':'';
+  renderGreet(!sh);
+  $('#stats').style.display=sh?'none':'';$('.tools').style.display=sh?'none':'';
+  if(S.tab==='shelf'){renderShelf();return}
+  if(S.tab==='wish'){renderWish();return}
+  if(S.tab==='stats'){renderStats();return}
+  fillFilters();
+  const all=S.items.filter(i=>i.type===cur());
+  const rated=all.filter(i=>i.score>0);
+  const avg=rated.length?(rated.reduce((s,i)=>s+i.score,0)/rated.length).toFixed(1):'-';
+  const col={want:'--want',doing:'--doing',done:'--done',drop:'--drop'};
+  let h=`<button class="chip" data-f="all" aria-pressed="${filter==='all'}"><b>${all.length}</b>${tr('ทั้งหมด')}</button>`;
+  for(const[k,l]of STATUS[cur()])h+=`<button class="chip" data-f="${k}" aria-pressed="${filter===k}"><i style="background:var(${col[k]})"></i><b>${all.filter(i=>i.status===k).length}</b>${tr(l)}</button>`;
+  h+=`<div class="chip"><b>${avg}</b>${tr('คะแนนเฉลี่ย')}</div>`;
+  if(cur()==='book')h+=`<div class="chip"><b>${all.filter(i=>i.owned).length}</b>${tr('ซื้อแล้ว')}</div>`;
+  if(cur()==='manga')h+=`<div class="chip"><b>${all.reduce((s,i)=>s+(i.owned?+i.vols||0:0),0)}</b>${tr('เล่มที่มี')}</div>`;
+  $('#stats').innerHTML=h;
+  renderSide(all);
+  const items=visible();
+  if(!items.length){
+    $('#out').innerHTML=`<div class="empty">${tr(all.length?'ไม่พบรายการที่ตรงกับตัวกรอง':({manga:'ยังไม่มีมังงะในรายการ กด “+ เพิ่มรายการ” เพื่อเริ่มต้น',anime:'ยังไม่มีอนิเมะในรายการ กด “+ เพิ่มรายการ” เพื่อเริ่มต้น',book:'ยังไม่มีหนังสือในรายการ กด “+ เพิ่มรายการ” เพื่อเริ่มต้น'}[cur()]))}</div>`;return;
+  }
+  $('#out').className=S.view==='grid'?'grid':'list';
+  $('#out').innerHTML=items.map(i=>{
+    const c=`var(${col[i.status]})`;
+    return `<button class="card" data-id="${i.id}">
+      <div class="cover"><img loading="lazy" src="${esc(coverOf(i)||PH)}" alt="${esc(tr('ปก {0}',i.title))}" onerror="this.onerror=null;this.src=PH">
+        <span class="badge" style="color:${c}">${sLabel(i.type,i.status)}</span>
+        ${i.owned?'<span class="own">'+tr('ซื้อแล้ว')+'</span>':''}${i.score?`<span class="score">★ ${i.score}</span>`:''}${mpHtml(i)}</div>
+      <div class="meta"><div class="t">${esc(i.title)}</div>${i.orig?`<div class="orig">${esc(i.orig)}</div>`:''}${i.author&&i.type!=='book'?`<div class="orig">${esc(i.author)}</div>`:''}
+        <div class="s">${i.type==='book'?[i.year,i.author].filter(Boolean).map(esc).join(' · '):(i.year?esc(i.year)+' · ':'')+sub(i)}</div>${nxHtml(i)}${pillsHtml(i)}
+        <div class="tags"><span class="badge" style="color:${c}">${sLabel(i.type,i.status)}</span>${i.owned?'<span class="own">'+tr('ซื้อแล้ว')+'</span>':''}${i.score?`<span class="score">★ ${i.score}</span>`:''}</div>
+      </div></button>`;
+  }).join('');
+}
+
+/* ---------- ชั้นหนังสือ: แสดงเฉพาะเล่มที่ซื้อแล้ว ---------- */
+let shelfFilter='all';
+function renderShelf(){
+  const out=$('#out');out.className='';
+  const asc=S.shelfSort!=='desc',col=S.shelfCollapsed||{},F=shelfFilter;
+  const series=S.items.filter(i=>i.type==='manga'&&(i.volList||[]).length).sort((a,b)=>a.title.localeCompare(b.title,S.lang));
+  const books=S.items.filter(i=>i.type==='book').sort((a,b)=>a.title.localeCompare(b.title,S.lang));
+  const allCol=series.length>0&&series.every(i=>col[i.id]);
+  const chip=(k,l)=>`<button class="chip" data-sf="${k}" aria-pressed="${F===k}">${tr(l)}</button>`;
+  // เล่มที่อ่านแล้ว: ในหมวด "อ่านแล้ว" แสดงเป็นสีแม้ยังไม่ได้ซื้อ หมวดอื่นยังเป็นสีเทา
+  const passV=v=>F==='all'||(F==='owned'&&v.own)||(F==='missing'&&!v.own)||(F==='wish'&&v.wish&&!v.own)||(F==='read'&&v.read)||(F==='unread'&&v.own&&!v.read);
+  const passB=b=>F==='all'||(F==='owned'&&b.owned)||(F==='missing'&&!b.owned)||(F==='read'&&b.status==='done')||(F==='unread'&&b.owned&&b.status!=='done');
+  let h=`<div class="shelftools">${chip('all','ทั้งหมด')}${chip('owned','มีแล้ว')}${chip('missing','ยังไม่มี')}${chip('wish','อยากได้')}${chip('unread','ยังไม่อ่าน')}${chip('read','อ่านแล้ว')}<button class="btn" id="shelfAll" style="margin-left:auto">${tr(allCol?'ขยายทั้งหมด':'ย่อทั้งหมด')}</button><button class="btn" id="shelfSort">${tr(asc?'เล่มเก่า → ใหม่':'เล่มใหม่ → เก่า')}</button></div>`;
+  let mh='';
+  for(const i of series){
+    const l=i.volList.filter(passV).sort((a,b)=>asc?a.n-b.n:b.n-a.n);
+    if(!l.length)continue;
+    const c=!!col[i.id],shown=c?[l.reduce((a,b)=>b.n<a.n?b:a)]:l;
+    mh+=`<section class="shelf"><div class="sh"><h2><button class="sh-t" data-tg="${i.id}" aria-expanded="${!c}"><span class="chev">▾</span><span>${esc(i.title)} <small>(${volStat(i).own}/${volStat(i).total})</small></span></button></h2>${smHtml(i)}<button class="btn" data-sid="${i.id}">${tr('จัดการเล่ม')}</button></div><div class="sgrid">`+
+      shown.map(v=>{const miss=!v.own&&F!=='read';return `<button class="bk${miss?' miss':''}" data-sid="${i.id}" title="${esc(tr('เล่ม {0}',v.n))}">${v.cover?`<img loading="lazy" src="${esc(v.cover)}" alt="${esc(i.title+' '+tr('เล่ม {0}',v.n))}" onerror="this.remove()">`:`<span class="fb">${v.n}</span>`}<span class="no">${v.n}</span>${v.wish&&!v.own?'<span class="wh2">♡</span>':''}${v.read?`<span class="rd">✓ ${tr('อ่านแล้ว')}</span>`:''}</button>`}).join('')+'</div></section>';
+  }
+  let bh='';const bl=books.filter(passB);
+  if(bl.length){
+    const c=!!col.__book;
+    bh=`<h2 class="shcat"><button class="sh-t" data-tg="__book" aria-expanded="${!c}"><span class="chev">▾</span><span>${tr('หนังสืออื่นๆ')} <small>(${books.filter(b=>b.owned).length}/${books.length})</small></span></button></h2>`+
+      (c?'':`<div class="sgrid" style="margin-bottom:30px">`+bl.map(b=>{const miss=!b.owned&&F!=='read';return `<div class="bkw"><button class="bk${miss?' miss':''}" data-eid="${b.id}" title="${esc(b.title)}">${b.cover?`<img loading="lazy" src="${esc(b.cover)}" alt="${esc(b.title)}" onerror="this.remove()">`:`<span class="fb">${esc([...b.title][0]||'')}</span>`}${b.status==='done'?`<span class="rd">✓ ${tr('อ่านแล้ว')}</span>`:''}</button><div class="cap">${esc(b.title)}</div></div>`}).join('')+'</div>');
+  }
+  if(mh)h+=`<h2 class="shcat">${tr('มังงะ')}</h2>`+mh;
+  h+=bh;
+  if(!mh&&!bh)h+=`<div class="empty">${tr('ชั้นหนังสือยังว่าง ดึงปกเล่มของมังงะ (จัดการเล่ม) หรือเพิ่มหนังสืออื่นๆ ก่อน')}</div>`;
+  out.innerHTML=h;
+}
+
+/* ---------- เพิ่มรายการ ---------- */
+const addDlg=$('#addDlg'),editDlg=$('#editDlg');
+let srcSel='',searchSeq=0;
+function openAdd(){
+  const bk=cur()==='book';
+  $('#addTitle').textContent=tr({manga:'เพิ่มมังงะ',anime:'เพิ่มอนิเมะ',book:'เพิ่มหนังสือ'}[cur()]);
+  $('#addSeg').style.display=bk?'none':'';$('#mAuthorL').style.display='';
+  if(!bk){
+    $('#srcSel').innerHTML=SOURCES[cur()].map(s=>`<option value="${s.id}">${s.name}</option>`).join('');
+    $('#srcSel').hidden=SOURCES[cur()].length<2;
+    $('#sq').value='';$('#results').innerHTML='<p class="note">'+tr('พิมพ์ชื่อเรื่องเพื่อค้นหา ผลลัพธ์จะขึ้นอัตโนมัติ')+'</p>';
+  }
+  mode(bk?'manual':'search');addDlg.showModal();(bk?$('#mTitle'):$('#sq')).focus();
+}
+function mode(m){
+  $('#p-search').hidden=m!=='search';$('#p-manual').hidden=m!=='manual';
+  $('#m-search').setAttribute('aria-selected',String(m==='search'));$('#m-manual').setAttribute('aria-selected',String(m==='manual'));
+}
+let cands=[];
+function haveOf(r){const nt=norm(r.title),na=r.alt?norm(r.alt):'';return S.items.find(i=>i.type===cur()&&((i.src===r.src&&i.srcId&&i.srcId===r.srcId)||norm(i.title)===nt||(i.orig&&norm(i.orig)===nt)||(na&&norm(i.alt||'')===na)))}
+function haveHtml(r){const h=haveOf(r);if(!h)return'';const own=h.type==='manga'?((h.volList||[]).length?volStat(h).own:(h.vols||0)):0;return `<small class="have">✓ ${own>0?tr('มีในชั้นแล้ว {0} เล่ม',own):tr('อยู่ในรายการแล้ว')}</small>`}
+const manualRow=()=>`<button class="res" data-manual="1"><span style="font-size:22px;width:44px;text-align:center;flex:none">✎</span><span><b>${tr('หาไม่เจอ? บันทึกด้วยตัวเอง')}</b><small>${tr('กรอกชื่อ ปี และปกเองได้เลย')}</small></span></button>`;
+async function doSearch(){
+  const q=$('#sq').value.trim(),seq=++searchSeq;
+  if(q.length<2){$('#results').innerHTML='<p class="note">'+tr('พิมพ์อย่างน้อย 2 ตัวอักษร')+'</p>';return}
+  $('#results').innerHTML='<p class="note">'+tr('กำลังค้นหา…')+'</p>';
+  try{
+    const{rows,via,fallback}=await searchAll(cur(),q,$('#srcSel').value);
+    if(seq!==searchSeq)return;
+    cands=rows;
+    $('#results').innerHTML=(fallback?`<p class="note">${tr('แหล่งที่เลือกใช้ไม่ได้ ใช้ {0} แทน',via)}</p>`:'')+
+      (rows.length?rows.map((r,n)=>`<button class="res" data-n="${n}"><img src="${esc(r.cover||PH)}" alt="" onerror="this.onerror=null;this.src=PH">
+        <span><b>${esc(r.title)}</b><small>${esc(r.alt&&r.alt!==r.title?r.alt:'')}</small><small>${r.year||tr('ไม่ทราบปี')}${r.total?' · '+tr(cur()==='anime'?'{0} ตอน':'{0} เล่ม',r.total):''}</small>${haveHtml(r)}</span></button>`).join('')
+        :'<p class="note">'+tr('ไม่พบผลลัพธ์ ลองชื่อภาษาอังกฤษหรือโรมาจิ หรือใช้แท็บ “กรอกเอง”')+'</p>')+manualRow();
+  }catch(e){
+    if(seq===searchSeq)$('#results').innerHTML=`<p class="note">${esc(tr('ค้นหาไม่สำเร็จ ({0}) ถ้าเปิดไฟล์ในหน้าแสดงตัวอย่างของแชต ให้ดาวน์โหลดแล้วเปิดในเบราว์เซอร์โดยตรง หรือกรอกเอง',e.message))}</p>`+manualRow();
+  }
+}
+function newItem(o){
+  return{id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),type:cur(),src:'custom',srcId:'',title:'',alt:'',cover:'',year:'',
+    status:'want',score:0,progress:0,total:0,owned:false,vols:0,note:'',themes:[],demo:'',tags:[],added:Date.now(),...o};
+}
+function addItem(o){
+  if(o.srcId&&S.items.some(i=>i.type===cur()&&i.src===o.src&&i.srcId===o.srcId)){toast('มีรายการนี้อยู่แล้ว');return}
+  const it=newItem(o);S.items.push(it);save();render();addDlg.close();toast('เพิ่มแล้ว');openEdit(it.id);
+}
+function resize(file,max=360){
+  return new Promise((ok,no)=>{
+    const img=new Image(),u=URL.createObjectURL(file);
+    img.onload=()=>{const w=Math.min(max,img.width),c=document.createElement('canvas');c.width=w;c.height=img.height*w/img.width;
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(u);ok(c.toDataURL('image/jpeg',.82))};
+    img.onerror=no;img.src=u;
+  });
+}
+
+/* ---------- แก้ไขรายการ ---------- */
+let editId=null;
+function openEdit(id){
+  const i=S.items.find(x=>x.id===id);if(!i)return;editId=id;
+  $('#eTitle').textContent=tr('รายละเอียด');$('#eImg').src=coverOf(i)||PH;$('#eImg').onerror=function(){this.onerror=null;this.src=PH};
+  $('#eName').textContent=i.title;$('#eTitleIn').value=i.title;$('#eAuthor').value=i.author||'';$('#eOrig').textContent=i.orig?tr('ชื่อต้นฉบับ: {0}',i.orig):'';$('#eOrigRow').hidden=!i.orig;$('#eSub').textContent=[i.author,i.alt&&i.alt!==i.title?i.alt:'',i.year].filter(Boolean).join(' · ');
+  $('#eStatus').innerHTML=STATUS[i.type].map(([k,l])=>`<option value="${k}">${tr(l)}</option>`).join('');
+  $('#eStatus').value=i.status;
+  $('#eScore').innerHTML='<option value="0">'+tr('ยังไม่ให้คะแนน')+'</option>'+[10,9,8,7,6,5,4,3,2,1].map(n=>`<option value="${n}">${n} / 10</option>`).join('');
+  $('#eScore').value=i.score;
+  editTags=new Set(i.tags||[]);editThemes=new Set(i.themes||[]);fillEditCfg();
+  $('#eProgL').textContent=tr(i.type==='anime'?'ตอนที่ดูแล้ว':'เล่มล่าสุดที่อ่าน');
+  $('#eTotL').textContent=tr(i.type==='anime'?'ตอนทั้งหมด':'จำนวนเล่มทั้งหมด');
+  $('#eProg').value=i.progress||0;$('#eTot').value=i.total||0;
+  const bk=i.type==='book';$('#eProgRow').hidden=bk;$('#eOwnBox').hidden=i.type==='anime';$('#eVolsL').hidden=bk;$('#eVolBtn').hidden=i.type!=='manga';$('#eOwn').checked=!!i.owned;$('#eVols').value=i.vols||0;
+  $('#eNote').value=i.note||'';$('#ePubL').hidden=i.type==='anime';
+  editDlg.showModal();
+}
+function saveEdit(){
+  const i=S.items.find(x=>x.id===editId);if(!i)return;
+  const nt=$('#eTitleIn').value.trim();
+  if(nt&&nt!==i.title){if(!i.orig)i.orig=i.title;i.title=nt}
+  if(i.orig&&i.title===i.orig)delete i.orig;
+  i.status=$('#eStatus').value;i.score=+$('#eScore').value;
+  i.progress=Math.max(0,+$('#eProg').value||0);i.total=Math.max(0,+$('#eTot').value||0);
+  i.owned=$('#eOwn').checked;i.vols=Math.max(0,+$('#eVols').value||0);i.note=$('#eNote').value.trim();i.pub=$('#ePub').value;i.themes=[...editThemes].filter(id=>S.cfg.cats.some(c=>c.id===id));i.demo=$('#eDemo').value;i.author=$('#eAuthor').value.trim();if(!i.author)delete i.author;i.tags=[...editTags].filter(id=>S.cfg.tags.some(t=>t.id===id));
+  if(i.status==='done'&&i.total&&!i.progress)i.progress=i.total;
+  save();render();editDlg.close();toast('บันทึกแล้ว');
+}
+
+/* ---------- เล่มแต่ละเล่ม (Google Books) ----------
+ item.volList = [{ n:เลขเล่ม, cover:url, own:bool, read:bool }] */
+const volDlg=$('#volDlg');let volItem=null;
+const norm=t=>String(t).toLowerCase().replace(/[^\p{L}\p{N}]/gu,'');
+function volNo(t){
+  if(/box\s*set|omnibus|collection|\d+\s*[-–]\s*\d+|\d+\s*in\s*1/i.test(t))return null;
+  const m=t.match(/(?:\bvol(?:ume)?\.?\s*|\bv\.?\s*|เล่ม(?:ที่)?\s*|#\s*|第\s*)0*(\d{1,3})|\b0*(\d{1,3})\s*(?:巻)?\s*$/i);
+  return m?+(m[1]||m[2]):null;
+}
+async function gbGet(url){
+  for(let k=0;k<3;k++){
+    const r=await fetch(url);
+    if(r.status===429){await sleep(1500*(k+1));continue}   // โควตาเต็ม: รอแล้วลองใหม่
+    if(!r.ok){let m='';try{m=(await r.json()).error?.message||''}catch{}throw new Error('HTTP '+r.status+(m?': '+m:''))}
+    return r.json();
+  }
+  throw new Error('HTTP 429');
+}
+async function gbSearch(q){
+  const out=[],key=S.gbKey?'&key='+encodeURIComponent(S.gbKey):'';
+  for(let p=0;p<3;p++){
+    if(p)await sleep(800);
+    const j=await gbGet(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent('intitle:'+q)}&maxResults=40&startIndex=${p*40}&printType=books&fields=items(volumeInfo(title,subtitle,imageLinks))${key}`);
+    const it=j.items||[];out.push(...it);if(it.length<40)break;
+  }
+  return out;
+}
+const gbCacheGet=k=>{try{return (JSON.parse(localStorage.getItem('otaku-gbcache'))||{})[k]}catch{}};
+const gbCacheSet=(k,v)=>{try{const c=JSON.parse(localStorage.getItem('otaku-gbcache'))||{};c[k]=v;localStorage.setItem('otaku-gbcache',JSON.stringify(c))}catch{}};
+function openVols(){
+  const i=S.items.find(x=>x.id===editId);if(!i)return;
+  volItem=i;i.volList=i.volList||[];$('#vPc').value=i.priceCover??'';$('#vPd').value=i.pricePaid??'';$('#vKey').value=S.gbKey||'';$('#vProxy').value=S.mdProxy||'';
+  $('#vTitle').textContent=tr('เล่มของ {0}',i.title);$('#vq').value=i.orig||i.title;$('#vN').value=i.total||'';
+  renderVols();volDlg.showModal();
+}
+function renderVols(){
+  const l=volItem.volList.sort((a,b)=>a.n-b.n);
+  $('#vGrid').innerHTML=l.length?l.map(v=>`<div class="vt${v.own?' has':''}"><div class="vc">${v.cover?`<img loading="lazy" src="${esc(v.cover)}" alt="" onerror="this.remove()">`:''}<span>${v.cover?'':v.n}</span><b>${tr('เล่ม {0}',v.n)}</b>${volItem.coverPin&&volItem.coverPin===v.cover?'<em class="pin">★</em>':''}</div>
+    <div class="vb"><button data-n="${v.n}" data-k="own" aria-pressed="${!!v.own}">${tr('ซื้อ')}</button><button data-n="${v.n}" data-k="read" aria-pressed="${!!v.read}">${tr('อ่าน')}</button><button data-n="${v.n}" data-k="cov" title="${esc(tr('แก้ไขเล่ม {0}',v.n))}" aria-label="${esc(tr('แก้ไขเล่ม {0}',v.n))}">✎</button></div></div>`).join('')
+    :'<p class="note" style="grid-column:1/-1">'+tr('ยังไม่มีเล่ม กด “ดึงปกแต่ละเล่ม” หรือใส่จำนวนเล่มแล้วกด “สร้างเล่ม 1–N”')+'</p>';
+  renderVolSum();
+}
+function renderVolSum(){
+  const i=volItem;let spent=0;
+  for(const v of i.volList||[])if(v.own){const p=volPrice(i,v);if(p.paid!=null)spent+=p.paid}
+  $('#vSum').innerHTML=(i.volList.length?smHtml(i):'')+(spent?`<span>${tr('จ่ายรวม {0}',money(spent))}</span>`:'');
+}
+function addVol(n,cover){
+  let v=volItem.volList.find(x=>x.n===n);
+  if(!v){v={n,cover:'',own:false,read:false};volItem.volList.push(v)}
+  if(cover&&!v.cover)v.cover=cover;
+}
+const mdBase=()=>(S.mdProxy||'https://api.mangadex.org').replace(/\/+$/,'');
+function syncSources(){
+  SOURCES.manga=SOURCES.manga.filter(x=>x.id!=='mangadex');
+  if(S.mdProxy)SOURCES.manga.unshift({id:'mangadex',name:'MangaDex',search:mangadex});
+}
+// ปกแต่ละเล่มจาก MangaDex: /cover?manga[]=id -> attributes.volume + fileName
+async function mdRows(item,q){
+  let id=item.src==='mangadex'?item.srcId:'';
+  if(!id){
+    const j=await getJSON(`${mdBase()}/manga?title=${encodeURIComponent(q)}&limit=1&order[relevance]=desc`);
+    id=j.data&&j.data[0]&&j.data[0].id;if(!id)return[];
+  }
+  const ck='md|'+id,hit=gbCacheGet(ck);if(hit)return hit;
+  const m=new Map();
+  for(let off=0;off<500;off+=100){
+    const j=await getJSON(`${mdBase()}/cover?manga[]=${id}&limit=100&offset=${off}&order[volume]=asc`);
+    for(const c of j.data){
+      const a=c.attributes,n=parseInt(a.volume);if(!n)continue;
+      if(!m.has(n)||a.locale==='en')m.set(n,`https://uploads.mangadex.org/covers/${id}/${a.fileName}.256.jpg`);
+    }
+    if(j.data.length<100)break;
+  }
+  const rows=[...m];if(rows.length)gbCacheSet(ck,rows);return rows;
+}
+async function gbRows(q){
+  const nq=norm(q),ck='gb|'+nq;let rows=gbCacheGet(ck);if(rows)return rows;
+  rows=[];
+  for(const x of await gbSearch(q)){
+    const vi=x.volumeInfo||{};const t=(vi.title||'')+(vi.subtitle?' '+vi.subtitle:'');
+    if(!norm(t).includes(nq))continue;
+    const n=volNo(vi.title||'')??volNo(t);if(!n)continue;
+    let c=vi.imageLinks?.thumbnail||vi.imageLinks?.smallThumbnail||'';
+    rows.push([n,c.replace('http:','https:').replace('&edge=curl','')]);
+  }
+  if(rows.length)gbCacheSet(ck,rows);return rows;
+}
+async function fetchVols(){
+  const q=$('#vq').value.trim();if(!q)return;
+  $('#vNote').textContent=tr('กำลังค้นหาเล่ม…');$('#vFetch').disabled=true;
+  let rows=[],src='',mdErr=null,gbErr=null;
+  try{rows=await mdRows(volItem,q);src='MangaDex'}catch(e){mdErr=e}
+  if(!rows.length){try{rows=await gbRows(q);src='Google Books'}catch(e){gbErr=e}}
+  for(const[n,c]of rows)addVol(n,c);
+  const hint=mdErr&&!S.mdProxy?' '+tr('(MangaDex ต้องตั้ง proxy ด้านล่างก่อน)'):'';
+  $('#vNote').textContent=rows.length?tr('พบ {0} เล่มจาก {1} เล่มที่ไม่มีปกจะแสดงเป็นเลขเล่ม',rows.length,src)
+    :(gbErr?(gbErr.message==='HTTP 429'?tr('โควตา Google Books เต็มชั่วคราว รอสักครู่แล้วลองใหม่ หรือใส่ API key ของคุณเองในช่องด้านล่าง'):tr('ค้นหาไม่สำเร็จ ({0}) ลองใหม่ภายหลัง หรือสร้างเล่มด้วยจำนวนเล่ม',gbErr.message)):tr('ไม่พบเล่ม ลองเปลี่ยนชื่อ (ชื่ออังกฤษหรือชื่อไทยบนหนังสือ) หรือสร้างเล่มด้วยจำนวนเล่ม'))+hint;
+  renderVols();$('#vFetch').disabled=false;
+}
+function syncVols(){
+  const i=volItem,l=i.volList||[];if(!l.length)return;
+  i.vols=l.filter(v=>v.own).length;i.owned=i.vols>0;
+  const r=l.filter(v=>v.read).map(v=>v.n);if(r.length)i.progress=Math.max(...r);
+  if(!i.total)i.total=Math.max(...l.map(v=>v.n));
+  $('#eOwn').checked=i.owned;$('#eVols').value=i.vols;$('#eProg').value=i.progress||0;$('#eTot').value=i.total||0;
+  save();render();
+}
+$('#eVolBtn').onclick=openVols;
+$('#vFetch').onclick=fetchVols;
+const setDefault=(k,e)=>{const n=num(e.target.value);if(n==null)delete volItem[k];else volItem[k]=n;save();renderVols()};
+$('#vPc').onchange=e=>setDefault('priceCover',e);
+$('#vPd').onchange=e=>setDefault('pricePaid',e);
+$('#vNext').onclick=()=>{
+  const st=volStat(volItem);if(!st.next){toast('ครบทุกเล่มแล้ว');return}
+  addVol(st.next);const v=volItem.volList.find(x=>x.n===st.next);v.own=true;setOwnDate(v);renderVols();toast('ซื้อเล่ม {0} แล้ว',st.next);
+};
+$('#vProxy').onchange=e=>{S.mdProxy=e.target.value.trim();save();syncSources()};
+$('#vKey').onchange=e=>{S.gbKey=e.target.value.trim();save()};
+$('#vq').onkeydown=e=>{if(e.key==='Enter')fetchVols()};
+$('#vGen').onclick=()=>{
+  const n=Math.min(300,+$('#vN').value||0);if(!n){toast('ใส่จำนวนเล่มก่อน');return}
+  for(let k=1;k<=n;k++)addVol(k);renderVols();
+};
+$('#vGrid').onclick=e=>{
+  const b=e.target.closest('button[data-k]');if(!b)return;
+  if(b.dataset.k==='cov'){openCov(+b.dataset.n);return}
+  const v=volItem.volList.find(x=>x.n===+b.dataset.n);v[b.dataset.k]=!v[b.dataset.k];if(b.dataset.k==='own')setOwnDate(v);renderVols();
+};
+/* ---------- ปกรายเล่ม: วาง URL / อัปโหลดเอง / ตั้งเป็นปกหลัก ---------- */
+const covDlg=$('#covDlg');let covVol=null,covTemp='';
+function covPreview(){$('#cvImg').src=covTemp||$('#cvUrl').value.trim()||(covVol&&covVol.cover)||PH}
+function covState(){
+  $('#cvDel').hidden=!(covVol&&covVol.cover);
+  $('#cvUnpin').hidden=!volItem.coverPin;
+  $('#cvInfo').textContent=volItem.coverPin&&covVol.cover&&volItem.coverPin===covVol.cover?tr('เล่มนี้คือปกหลักของเรื่อง'):'';
+}
+function openCov(n){
+  covVol=volItem.volList.find(v=>v.n===n);if(!covVol)return;covTemp='';
+  $('#cvTitle').textContent=tr('เล่ม {0}',n);
+  $('#cvOwn').checked=!!covVol.own;$('#cvRead').checked=!!covVol.read;$('#cvWish').checked=!!covVol.wish&&!covVol.own;
+  $('#cvPc').value=covVol.pc??'';$('#cvPd').value=covVol.paid??'';$('#cvDate').value=covVol.date||'';
+  $('#cvPc').placeholder=volItem.priceCover??'';$('#cvPd').placeholder=volItem.pricePaid??volItem.priceCover??'';
+  $('#cvUrl').value=covVol.cover&&!covVol.cover.startsWith('data:')?covVol.cover:'';$('#cvFile').value='';
+  covPreview();covState();covDlg.showModal();
+}
+const covValue=()=>covTemp||$('#cvUrl').value.trim()||covVol.cover||'';
+function covApply(pin){
+  const c=covValue();
+  if(pin&&!c){toast('ยังไม่มีรูปปก ใส่ URL หรืออัปโหลดรูปก่อน');return}
+  if(c)covVol.cover=c;if(pin)volItem.coverPin=c;
+  for(const[k,id]of[['pc','#cvPc'],['paid','#cvPd']]){const n=num($(id).value);if(n==null)delete covVol[k];else covVol[k]=n}
+  if($('#cvDate').value)covVol.date=$('#cvDate').value;else delete covVol.date;
+  covVol.own=$('#cvOwn').checked;covVol.read=$('#cvRead').checked;covVol.wish=$('#cvWish').checked;
+  if(covVol.own)setOwnDate(covVol);if(!covVol.wish)delete covVol.wish;
+  renderVols();covDlg.close();toast(pin?'ตั้งเป็นปกหลักแล้ว':'บันทึกแล้ว');
+}
+$('#cvUrl').oninput=()=>{covTemp='';covPreview()};
+$('#cvFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{covTemp=await resize(f,240);covPreview()}catch{toast('อ่านรูปไม่ได้')}};
+$('#cvSave').onclick=()=>covApply(false);
+$('#cvPin').onclick=()=>covApply(true);
+$('#cvUnpin').onclick=()=>{delete volItem.coverPin;renderVols();covDlg.close();toast('บันทึกแล้ว')};
+$('#cvDel').onclick=()=>{if(volItem.coverPin===covVol.cover)delete volItem.coverPin;covVol.cover='';renderVols();covDlg.close();toast('ลบแล้ว')};
+const markAll=k=>{const l=volItem.volList;if(!l.length)return;const all=l.every(v=>v[k]);l.forEach(v=>v[k]=!all);if(k==='own')l.forEach(setOwnDate);renderVols()};
+$('#vAll').onclick=()=>markAll('own');
+$('#vRead').onclick=()=>markAll('read');
+$('#vDone').onclick=()=>volDlg.close();
+volDlg.addEventListener('close',()=>{syncVols();if(editDlg.open)$('#eImg').src=coverOf(volItem)||PH;if(detDlg.open)renderDetail()});
+covDlg.addEventListener('close',()=>{if(detDlg.open&&!volDlg.open){syncVols();renderDetail()}});
+editDlg.addEventListener('close',()=>{if(!detDlg.open)return;if(S.items.some(x=>x.id===detId))renderDetail();else detDlg.close()});
+
+/* ---------- หมวดหมู่ / แท็ก (ตั้งค่าเองได้) ---------- */
+const themesOf=i=>(i.themes||[]).map(id=>S.cfg.cats.find(c=>c.id===id)).filter(Boolean);
+const demoOf=i=>S.cfg.demos.find(d=>d.id===i.demo);
+const pubObj=i=>S.cfg.pubs.find(p=>p.id===i.pub);
+const pubOf=i=>{const p=pubObj(i);return p?p.name:''};
+const LISTID={cats:'catList',tags:'tagList',pubs:'pubList',demos:'demoList'};
+const tagsOf=i=>(i.tags||[]).map(id=>S.cfg.tags.find(t=>t.id===id)).filter(Boolean);
+const pill=o=>`<span class="pill" style="--c:${esc(o.color)}">${esc(o.name)}</span>`;
+const pillsHtml=i=>{const a=[demoOf(i),...themesOf(i),...tagsOf(i)].filter(Boolean);return a.length?'<div class="pills">'+a.map(pill).join('')+'</div>':''};
+function fillFilters(){
+  const set=(sel,list,all,cur2)=>{
+    sel.style.display=list.length?'':'none';
+    sel.innerHTML=`<option value="">${tr(all)}</option>`+list.map(o=>`<option value="${o.id}">${esc(o.name)}</option>`).join('');
+    sel.value=list.some(o=>o.id===cur2)?cur2:'';return sel.value;
+  };
+  fCat=set($('#fCat'),S.cfg.cats,'ทุกธีม',fCat);fDemo=set($('#fDemo'),S.cfg.demos,'ทุก Demographic',fDemo);fTag=set($('#fTag'),S.cfg.tags,'ทุกแท็ก',fTag);fPub=set($('#fPub'),S.cfg.pubs,'ทุกสำนักพิมพ์',fPub);if(cur()==='anime')$('#fPub').style.display='none';
+}
+let editTags=new Set(),editThemes=new Set();
+function fillEditCfg(keep){
+  const i=S.items.find(x=>x.id===editId);if(!i)return;
+  const sel=(el,list,none,v)=>{el.innerHTML=`<option value="">${tr(none)}</option>`+list.map(o=>`<option value="${o.id}">${esc(o.name)}</option>`).join('');el.value=list.some(o=>o.id===v)?v:''};
+  sel($('#ePub'),S.cfg.pubs,'ไม่ระบุสำนักพิมพ์',keep?$('#ePub').value:(i.pub||''));
+  sel($('#eDemo'),S.cfg.demos,'ไม่ระบุ',keep?$('#eDemo').value:(i.demo||''));
+  const pills=(list,set,attr,empty)=>list.length?list.map(o=>`<button type="button" class="pill" style="--c:${esc(o.color)}" ${attr}="${o.id}" aria-pressed="${set.has(o.id)}">${esc(o.name)}</button>`).join(''):`<span class="note">${tr(empty)}</span>`;
+  $('#eThemes').innerHTML=pills(S.cfg.cats,editThemes,'data-th','ยังไม่มีธีม กดปุ่มด้านล่างเพื่อสร้าง');
+  $('#eTags').innerHTML=pills(S.cfg.tags,editTags,'data-t','ยังไม่มีแท็ก กดปุ่มด้านล่างเพื่อสร้าง');
+}
+
+/* ---------- ตั้งค่า: จัดการหมวดหมู่/แท็ก + ซิงค์ ---------- */
+const setDlg=$('#setDlg');
+const PAL=['#ff7aa8','#6fb7ff','#62d99b','#ffc15e','#b58cff','#ff8f5e','#4fd1c5','#e86dd8'];
+function renderCfg(){
+  for(const k of['cats','tags','pubs','demos'])
+    $('#'+LISTID[k]).innerHTML=S.cfg[k].map(o=>`<div class="cfgrow"><input type="color" value="${esc(o.color)}" data-k="${k}" data-id="${o.id}" aria-label="color"><input class="nm" value="${esc(o.name)}" data-k="${k}" data-id="${o.id}" maxlength="40"><button class="btn danger" data-del="${o.id}" data-k="${k}" aria-label="${esc(tr('ลบ'))}">✕</button></div>`).join('');
+}
+function addCfg(k,label){
+  S.cfg[k].push({id:uid(),name:tr(label),color:PAL[S.cfg[k].length%PAL.length]});
+  save();renderCfg();render();
+  const n=document.querySelectorAll('#'+LISTID[k]+' .nm');n[n.length-1].select();
+}
+function openSettings(){renderCfg();$('#syTok').value=S.syncToken||'';$('#coverMode').value=S.cfg.coverMode||'orig';$('#setName').value=S.cfg.libName||'';$('#setTag').value=S.cfg.tagline||'';$('#setBanUrl').value=S.cfg.bannerUrl||'';$('#setBanShow').checked=!S.bannerOff;$('#setUser').value=S.cfg.userName||'';$('#setNavUrl').value=S.cfg.navImgUrl||'';syncMsgUpdate();setDlg.showModal()}
+setDlg.addEventListener('change',e=>{
+  const t=e.target;if(!t.dataset||!t.dataset.k||!t.dataset.id)return;
+  const o=S.cfg[t.dataset.k].find(x=>x.id===t.dataset.id);if(!o)return;
+  if(t.type==='color')o.color=t.value;else o.name=t.value.trim()||o.name;
+  save();render();
+});
+setDlg.addEventListener('click',e=>{
+  const d=e.target.closest('[data-del]');if(!d)return;
+  const k=d.dataset.k,id=d.dataset.del;
+  S.cfg[k]=S.cfg[k].filter(o=>o.id!==id);
+  S.items.forEach(i=>{if(k==='cats')i.themes=(i.themes||[]).filter(x=>x!==id);else if(k==='pubs'){if(i.pub===id)i.pub=''}else if(k==='demos'){if(i.demo===id)i.demo=''}else i.tags=(i.tags||[]).filter(x=>x!==id)});
+  save();renderCfg();render();
+});
+setDlg.addEventListener('close',()=>{if(editDlg.open)fillEditCfg(true);render()});
+const cfgSet=(k,v)=>{if(v)S.cfg[k]=v;else delete S.cfg[k];save();renderBrand()};
+$('#setName').onchange=e=>cfgSet('libName',e.target.value.trim());
+$('#setTag').onchange=e=>cfgSet('tagline',e.target.value.trim());
+$('#setBanUrl').onchange=e=>{const u=e.target.value.trim();if(u)S.banner='';cfgSet('bannerUrl',u)};
+$('#setBanFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{S.banner=await resize(f,1600);delete S.cfg.bannerUrl;$('#setBanUrl').value='';save();renderBrand();toast('บันทึกแล้ว')}catch{toast('อ่านรูปไม่ได้')}};
+$('#setBanClear').onclick=()=>{S.banner='';delete S.cfg.bannerUrl;$('#setBanUrl').value='';$('#setBanFile').value='';save();renderBrand()};
+$('#setUser').onchange=e=>{cfgSet('userName',e.target.value.trim());render()};
+$('#setNavUrl').onchange=e=>{const u=e.target.value.trim();if(u)S.navImg='';cfgSet('navImgUrl',u)};
+$('#setNavFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{S.navImg=await resize(f,600);delete S.cfg.navImgUrl;$('#setNavUrl').value='';save();renderBrand();toast('บันทึกแล้ว')}catch{toast('อ่านรูปไม่ได้')}};
+$('#setNavClear').onclick=()=>{S.navImg='';delete S.cfg.navImgUrl;$('#setNavUrl').value='';$('#setNavFile').value='';save();renderBrand()};
+$('#setBanShow').onchange=e=>{S.bannerOff=!e.target.checked;save();renderBrand()};
+$('#coverMode').onchange=e=>{S.cfg.coverMode=e.target.value;save();render()};
+
+/* ---------- ซิงค์ข้ามเครื่อง ผ่าน Secret Gist ---------- */
+const GH='https://api.github.com',GF='otaku-list.json',GD='otaku-list-sync';
+let syncBusy=false,syncTimer,syncInfo='';
+function setSync(st,m){const b=$('#settingsBtn');if(st)b.dataset.sync=st;else delete b.dataset.sync;syncInfo=m||'';syncMsgUpdate()}
+function syncMsgUpdate(){
+  $('#syMsg').textContent=syncInfo||(S.syncToken?(S.syncAt?tr('ซิงค์ล่าสุด {0}',new Date(S.syncAt).toLocaleString(S.lang)):''):tr('ยังไม่ได้เชื่อมต่อ'));
+}
+function schedulePush(){clearTimeout(syncTimer);if(S.syncToken)syncTimer=setTimeout(()=>syncNow(),4000)}
+async function gh(path,opt){
+  const r=await fetch(GH+path,{...opt,headers:{Authorization:'Bearer '+S.syncToken,Accept:'application/vnd.github+json','Content-Type':'application/json'}});
+  if(!r.ok){const e=new Error('HTTP '+r.status);e.status=r.status;throw e}
+  return r.json();
+}
+async function findGist(){
+  if(S.syncGist)return S.syncGist;
+  for(let p=1;p<=5;p++){
+    const l=await gh('/gists?per_page=100&page='+p);
+    const g=l.find(x=>x.files&&x.files[GF]);
+    if(g){S.syncGist=g.id;return g.id}
+    if(l.length<100)break;
+  }
+  return '';
+}
+async function pullRemote(id){
+  const g=await gh('/gists/'+id),f=g.files&&g.files[GF];if(!f)return null;
+  let txt=f.content;
+  if(f.truncated)txt=await (await fetch(f.raw_url)).text();
+  return JSON.parse(txt);
+}
+// รวมข้อมูล: รายรายการใช้ upd ใหม่กว่าชนะ, การลบใช้เวลาที่ลบเทียบกับ upd
+function mergeRemote(R){
+  if(!R||!Array.isArray(R.items))return;
+  const m=new Map(S.items.map(i=>[i.id,i]));
+  for(const r of R.items){const l=m.get(r.id);if(!l||(r.upd||0)>(l.upd||0))m.set(r.id,{...newItem({}),...r})}
+  const del={};for(const o of[R.deleted||{},S.deleted])for(const id in o)del[id]=Math.max(del[id]||0,o[id]);
+  for(const id of[...m.keys()])if((del[id]||0)>(m.get(id).upd||0))m.delete(id);
+  for(const id in del)if(m.has(id))delete del[id];
+  S.items=[...m.values()];S.items.forEach(normItem);S.deleted=del;
+  if((R.cfgUpd||0)>(S.cfgUpd||0)&&R.cfg){S.cfg={tags:R.cfg.tags||[],cats:R.cfg.cats||[],coverMode:R.cfg.coverMode||'orig',pubs:R.cfg.pubs||S.cfg.pubs||[],demos:R.cfg.demos||S.cfg.demos||[],demosSeeded:!!(R.cfg.demosSeeded||S.cfg.demosSeeded)};for(const k of['libName','tagline','bannerUrl','userName','navImgUrl'])if(R.cfg[k])S.cfg[k]=R.cfg[k];S.cfgUpd=R.cfgUpd}
+}
+function localAhead(R){
+  if(!R||!Array.isArray(R.items))return true;
+  const rm=new Map(R.items.map(i=>[i.id,i]));
+  for(const i of S.items){const r=rm.get(i.id);if(!r||(i.upd||0)>(r.upd||0))return true}
+  for(const id in S.deleted)if(S.deleted[id]>((R.deleted||{})[id]||0))return true;
+  return (S.cfgUpd||0)>(R.cfgUpd||0);
+}
+async function syncNow(retry){
+  if(!S.syncToken||syncBusy)return;
+  syncBusy=true;setSync('busy',tr('กำลังซิงค์…'));
+  try{
+    const id=await findGist();
+    const R=id?await pullRemote(id):null;
+    mergeRemote(R);rebuildSnap();save(true);
+    if(localAhead(R)){
+      const content=JSON.stringify({v:1,items:S.items,deleted:S.deleted,cfg:S.cfg,cfgUpd:S.cfgUpd});
+      const body={description:GD,files:{[GF]:{content}}};
+      if(id)await gh('/gists/'+id,{method:'PATCH',body:JSON.stringify(body)});
+      else{const g=await gh('/gists',{method:'POST',body:JSON.stringify({...body,public:false})});S.syncGist=g.id}
+    }
+    S.syncAt=Date.now();save(true);syncBusy=false;setSync('ok');render();
+  }catch(e){
+    syncBusy=false;
+    if(e.status===404&&S.syncGist&&!retry){S.syncGist='';return syncNow(true)}
+    setSync('err',tr('ซิงค์ไม่สำเร็จ ({0})',e.status===401||e.status===403?tr('โทเคนไม่ถูกต้อง หมดอายุ หรือไม่มีสิทธิ์ gist'):e.message));
+  }
+}
+
+/* ---------- กราฟสถิติ ---------- */
+let statScope='all';
+function renderStats(){
+  const out=$('#out');out.className='';
+  const L=S.items.filter(i=>statScope==='all'||i.type===statScope);
+  const chip=(k,l)=>`<button class="chip" data-ss="${k}" aria-pressed="${statScope===k}">${tr(l)}</button>`;
+  let h=`<div class="shelftools">${chip('all','ทั้งหมด')}${chip('manga','มังงะ')}${chip('anime','อนิเมะ')}${chip('book','หนังสืออื่นๆ')}</div>`;
+  if(!L.length){out.innerHTML=h+`<div class="empty">${tr('ยังไม่มีข้อมูลสำหรับสถิติ')}</div>`;return}
+  const avgOf=a=>{const r=a.filter(i=>i.score>0);return r.length?(r.reduce((x,i)=>x+i.score,0)/r.length).toFixed(1):'-'};
+  const vols=L.filter(i=>i.type==='manga').reduce((a,i)=>a+(i.owned?+i.vols||0:0),0);
+  const eps=L.filter(i=>i.type==='anime').reduce((a,i)=>a+(+i.progress||0),0);
+  const done=L.filter(i=>i.status==='done').length;
+  const kp=(n,l)=>`<div><b>${n}</b><span>${tr(l)}</span></div>`;
+  h+=`<div class="kp">${kp(L.length,'รายการทั้งหมด')}${kp(avgOf(L),'คะแนนเฉลี่ย')}${kp(Math.round(done/L.length*100)+'%','อัตราที่จบแล้ว')}${['all','manga'].includes(statScope)?kp(vols,'เล่มที่มี'):''}${['all','anime'].includes(statScope)?kp(eps,'ตอนที่ดูแล้ว'):''}</div>`;
+  const bars=rows=>{const mx=Math.max(1,...rows.map(r=>r.v));return rows.map(r=>`<div class="br"><span title="${esc(r.l)}">${esc(r.l)}</span><div class="bt"><i style="width:${r.v/mx*100}%;background:${esc(r.c)}"></i></div><b>${r.t}</b></div>`).join('')};
+  const cols=rows=>{const mx=Math.max(1,...rows.map(r=>r.v));return `<div class="cols">`+rows.map(r=>`<div title="${esc(r.l)}: ${r.v}"><em>${r.v||''}</em><div class="cb"><i style="height:${r.v/mx*100}%"></i></div>${esc(r.l)}</div>`).join('')+`</div>`};
+  // สัดส่วนสถานะ
+  const SL={want:['อยากอ่าน','อยากดู'],doing:['กำลังอ่าน','กำลังดู'],done:['อ่านจบ','ดูจบ'],drop:['ดร็อป']};
+  const SC={want:'--want',doing:'--doing',done:'--done',drop:'--drop'};
+  const lab=k=>statScope==='anime'?tr(SL[k][1]||SL[k][0]):(statScope==='manga'||statScope==='book')?tr(SL[k][0]):[...new Set(SL[k].map(x=>tr(x)))].join(' / ');
+  let acc=0;const stops=[],legend=[];
+  for(const k of Object.keys(SL)){
+    const n=L.filter(i=>i.status===k).length,a=acc/L.length*100;acc+=n;
+    if(n)stops.push(`var(${SC[k]}) ${a}% ${acc/L.length*100}%`);
+    legend.push(`<li><i style="background:var(${SC[k]})"></i>${lab(k)} <b>${n}</b></li>`);
+  }
+  const p1=`<div class="pn"><h3>${tr('สัดส่วนตามสถานะ')}</h3><div class="dl"><div class="donut" style="background:conic-gradient(${stops.join(',')})"></div><ul>${legend.join('')}</ul></div></div>`;
+  // กระจายคะแนน
+  const p2=`<div class="pn"><h3>${tr('การกระจายคะแนน')}</h3>${cols([1,2,3,4,5,6,7,8,9,10].map(n=>({l:String(n),v:L.filter(i=>i.score===n).length})))}</div>`;
+  // เพิ่มต่อเดือน
+  const now=new Date(),mrows=[];
+  for(let m=11;m>=0;m--){
+    const d=new Date(now.getFullYear(),now.getMonth()-m,1),k=d.getFullYear()*12+d.getMonth();
+    mrows.push({l:d.toLocaleDateString(S.lang,{month:'short'}),v:L.filter(i=>{const x=new Date(i.added||0);return x.getFullYear()*12+x.getMonth()===k}).length});
+  }
+  const p3=`<div class="pn"><h3>${tr('เพิ่มต่อเดือน (12 เดือนล่าสุด)')}</h3>${cols(mrows)}</div>`;
+  // หมวดหมู่ / แท็ก
+  const catRows=S.cfg.cats.map(c=>{const a=L.filter(i=>(i.themes||[]).includes(c.id));return{l:c.name,v:a.length,c:c.color,t:`${a.length} · ★${avgOf(a)}`}});
+  const nocat=L.filter(i=>!(i.themes||[]).length);if(nocat.length&&S.cfg.cats.length)catRows.push({l:tr('ไม่มีธีม'),v:nocat.length,c:'var(--mute)',t:`${nocat.length} · ★${avgOf(nocat)}`});
+  const tagRows=S.cfg.tags.map(t=>{const a=L.filter(i=>(i.tags||[]).includes(t.id));return{l:t.name,v:a.length,c:t.color,t:`${a.length} · ★${avgOf(a)}`}}).sort((a,b)=>b.v-a.v).slice(0,12);
+  const demoRows=S.cfg.demos.map(d=>{const a=L.filter(i=>i.demo===d.id);return{l:d.name,v:a.length,c:d.color,t:`${a.length} · ★${avgOf(a)}`}}).filter(r=>r.v);
+  const hint=`<p class="note">${tr('สร้างธีม แท็ก และ Demographic ได้ในตั้งค่า (ปุ่ม ⚙ ด้านซ้ายล่าง)')}</p>`;
+  const p4=`<div class="pn"><h3>${tr('ตามธีม (จำนวน · คะแนนเฉลี่ย)')}</h3>${catRows.length?bars(catRows):hint}</div>`;
+  const p6=`<div class="pn"><h3>${tr('ตาม Demographic (จำนวน · คะแนนเฉลี่ย)')}</h3>${demoRows.length?bars(demoRows):hint}</div>`;
+  const p5=`<div class="pn"><h3>${tr('ตามแท็ก (จำนวน · คะแนนเฉลี่ย)')}</h3>${tagRows.length?bars(tagRows):hint}</div>`;
+  const p0=(()=>{
+    if(!['all','manga'].includes(statScope))return'';
+    const rows=[];
+    for(const i of L){if(i.type!=='manga')continue;for(const v of i.volList||[]){if(!v.own)continue;const p=volPrice(i,v);if(p.paid==null)continue;rows.push({d:v.date||'',pc:p.pc??p.paid,paid:p.paid})}}
+    const r=S.expRange||'6',now=new Date(),mk=d=>d.getFullYear()*12+d.getMonth(),ym=t=>+t.slice(0,4)*12+ +t.slice(5,7)-1;
+    let sel=rows;const months=[];
+    if(r==='all'){const ds=rows.filter(x=>x.d).map(x=>ym(x.d)),n=Math.min(24,mk(now)-(ds.length?Math.min(...ds):mk(now))+1);for(let m=n-1;m>=0;m--)months.push(new Date(now.getFullYear(),now.getMonth()-m,1))}
+    else{for(let m=+r-1;m>=0;m--)months.push(new Date(now.getFullYear(),now.getMonth()-m,1));const lo=mk(months[0]);sel=rows.filter(x=>x.d&&ym(x.d)>=lo)}
+    const rc=(k,l)=>`<button class="chip" data-er="${k}" aria-pressed="${r===k}">${tr(l)}</button>`;
+    const head=`<div class="ph"><h3>${tr('สรุปรายจ่าย')}</h3><span class="chips" style="display:flex;gap:6px">${rc('6','6 เดือน')}${rc('12','12 เดือน')}${rc('all','ทั้งหมด')}</span></div>`;
+    if(!rows.length)return `<div class="pn" style="grid-column:1/-1">${head}<p class="note">${tr('ยังไม่มีข้อมูลราคา ใส่ราคาในหน้าจัดการเล่ม (ช่องราคาด้านบน หรือปุ่ม ✎ ของแต่ละเล่ม)')}</p></div>`;
+    const spent=sel.reduce((a,x)=>a+x.paid,0),cover=sel.reduce((a,x)=>a+x.pc,0),saved=sel.reduce((a,x)=>a+Math.max(0,x.pc-x.paid),0);
+    const bars=months.map(d=>({l:d.toLocaleDateString(S.lang,{month:'short'}),v:Math.round(sel.filter(x=>x.d&&ym(x.d)===mk(d)).reduce((a,x)=>a+x.paid,0))}));
+    const undated=rows.filter(x=>!x.d).length;
+    return `<div class="pn" style="grid-column:1/-1">${head}<div class="big">${money(spent)}<small>${tr('{0} เล่ม',sel.length)}</small></div>
+      <div class="kp">${kp(money(cover),'ราคาปกรวม')}${kp(money(saved)+(cover?' ('+(saved/cover*100).toFixed(1)+'%)':''),'ประหยัดได้')}${kp(money(spent/months.length),'เฉลี่ยต่อเดือน')}${kp(sel.length?money(spent/sel.length):'-','เฉลี่ยต่อเล่ม')}</div>
+      ${cols(bars)}${undated&&r!=='all'?`<p class="note">${tr('{0} เล่มที่ซื้อไว้ไม่มีวันที่ จึงไม่นับในช่วงนี้ (ตั้งวันที่ได้ที่ปุ่ม ✎ ของแต่ละเล่ม)',undated)}</p>`:''}</div>`;
+  })();
+  out.innerHTML=h+`<div class="sgr">${p0}${p1}${p2}${p3}${p4}${p6}${p5}</div>`;
+}
+
+/* ---------- แถบด้านข้างของหน้ารายการ ---------- */
+function renderSide(all){
+  const side=$('#side');if(!all.length){side.innerHTML='';return}
+  const colv={want:'--want',doing:'--doing',done:'--done',drop:'--drop'},tot=all.length;
+  const cnt=STATUS[cur()].map(([k,l])=>({k,l,n:all.filter(i=>i.status===k).length}));
+  let acc=0;
+  const grad=cnt.filter(c=>c.n).map(c=>{const a=acc/tot*100;acc+=c.n;return `var(${colv[c.k]}) ${a}% ${acc/tot*100}%`}).join(',');
+  const row=(i,r)=>`<button class="lrow" data-did="${i.id}"><img src="${esc(coverOf(i)||PH)}" alt="" loading="lazy" onerror="this.onerror=null;this.src=PH"><b>${esc(i.title)}</b><span>${r}</span></button>`;
+  const loc={th:'th-TH-u-ca-gregory',ru:'ru-RU',ja:'ja-JP'}[S.lang]||'en-US';
+  let h=`<section class="sw"><h3>${tr('สัดส่วนสถานะ')}</h3><div class="dn"><div class="dnut" style="background:conic-gradient(${grad})"><div><b>${tot}</b><small>${tr('รายการ')}</small></div></div><div class="lg2">${cnt.map(c=>`<span><i style="background:var(${colv[c.k]})"></i>${tr(c.l)}<em>${c.n}</em></span>`).join('')}</div></div></section>`;
+  const top=all.filter(i=>i.score>0).sort((a,b)=>b.score-a.score).slice(0,5);
+  h+=`<section class="sw"><h3>${tr('คะแนนสูงสุด')}</h3>${top.length?top.map(i=>row(i,'★ '+i.score)).join(''):`<p class="note">${tr('ยังไม่มีข้อมูล')}</p>`}</section>`;
+  h+=`<section class="sw"><h3>${tr('ล่าสุดที่เพิ่ม')}</h3>${all.slice().sort((a,b)=>(b.added||0)-(a.added||0)).slice(0,5).map(i=>row(i,i.added?new Date(i.added).toLocaleDateString(loc,{day:'numeric',month:'short',year:'numeric'}):'')).join('')}</section>`;
+  if(cur()==='manga'){
+    const nx=all.filter(i=>(i.volList||[]).length).map(i=>({i,s:volStat(i)})).filter(x=>x.s.next).sort((a,b)=>a.s.missing-b.s.missing).slice(0,5);
+    if(nx.length)h+=`<section class="sw"><h3>${tr('ต้องซื้อต่อ')}</h3>${nx.map(x=>row(x.i,tr('ถัดไปเล่ม {0}',x.s.next))).join('')}</section>`;
+  }
+  side.innerHTML=h;
+}
+$('#side').onclick=e=>{const b=e.target.closest('[data-did]');if(b)openDetail(b.dataset.did)};
+
+/* ---------- หน้ารายละเอียดเรื่อง ---------- */
+const detDlg=$('#detDlg');let detId=null,detFilter='all';
+function openDetail(id){
+  const i=S.items.find(x=>x.id===id);if(!i)return;
+  detId=id;detFilter='all';editId=id;volItem=i;if(i.type==='manga')i.volList=i.volList||[];
+  renderDetail();if(!detDlg.open)detDlg.showModal();
+}
+function renderDetail(){
+  const i=S.items.find(x=>x.id===detId);if(!i){detDlg.close();return}
+  volItem=i;editId=i.id;
+  const mg=i.type==='manga',l=mg?(i.volList||[]).slice().sort((a,b)=>a.n-b.n):[],st=mg&&l.length?volStat(i):null;
+  const cv=coverOf(i)||PH,sc={want:'--want',doing:'--doing',done:'--done',drop:'--drop'}[i.status];
+  $('#dtTitle').textContent=i.title;
+  const tile=(n,lb)=>`<div class="tile"><span>${tr(lb)}</span><b>${n}</b></div>`;
+  let h=`<div class="hero"><img class="hbg" src="${esc(cv)}" alt="" onerror="this.remove()"><div class="hin"><img class="hcov" src="${esc(cv)}" alt="${esc(tr('ปก {0}',i.title))}" onerror="this.onerror=null;this.src=PH"><div class="hm"><span class="badge2" style="color:var(${sc})">${sLabel(i.type,i.status)}</span>${i.score?` <span class="badge2">★ ${i.score}</span>`:''}<h2>${esc(i.title)}</h2>${i.orig?`<div class="dsub">${esc(tr('ชื่อต้นฉบับ: {0}',i.orig))}</div>`:''}<div class="dsub">${[i.author,i.alt&&i.alt!==i.title?i.alt:'',pubOf(i),i.year].filter(Boolean).map(esc).join(' · ')}</div>${pillsHtml(i)}${mg?`<div class="prow"><button class="btn" id="dVols">${tr('จัดการเล่ม')}</button></div>`:''}</div></div></div>`;
+  if(mg&&st){
+    let spent=0,saved=0,wishN=0,budget=0,hasP=false;
+    for(const v of l){const p=volPrice(i,v);
+      if(v.own&&p.paid!=null){hasP=true;spent+=p.paid;if(p.pc!=null)saved+=Math.max(0,p.pc-p.paid)}
+      if(v.wish&&!v.own){wishN++;budget+=p.paid??p.pc??0}}
+    const pct=Math.round(st.own/st.total*100);
+    h+=`<div class="tiles">${tile(st.own+'/'+st.total,'มีแล้ว')}${tile(hasP?money(spent):'-','จ่ายไป')}${tile(hasP?money(saved):'-','ประหยัดได้')}${wishN?tile(wishN+' · ~'+money(budget),'Wishlist'):''}</div>`;
+    h+=`<div class="pcard"><div class="pbar"><i style="width:${pct}%"></i></div><div class="prow"><b>${pct}%</b>${st.next?`<span>${tr('เล่มถัดไปที่ต้องซื้อ: เล่ม {0}',st.next)}</span><button class="btn primary" id="dNext" style="margin-left:auto">${tr('+ ซื้อเล่ม {0}',st.next)}</button>`:`<span class="sm"><em class="ok">${tr('ครบทุกเล่มแล้ว')}</em></span>`}</div>${st.missing?`<div class="prow"><button class="btn" id="dWishAll">♡ ${tr('ใส่เล่มที่ยังขาดทั้งหมดใน Wishlist')}</button></div>`:''}</div>`;
+    const own=l.filter(v=>v.own),rd=own.filter(v=>v.read).length;
+    if(own.length)h+=`<div class="pcard"><h3>${tr('การอ่าน')} <small style="font:400 13px 'Noto Sans Thai',sans-serif;color:var(--mute);float:right">${tr('อ่านแล้ว {0} / {1} เล่ม',rd,own.length)}</small></h3><div class="dots">${own.map(v=>`<i class="${v.read?'r':''}" title="${esc(tr('เล่ม {0}',v.n))}"></i>`).join('')}</div></div>`;
+  }else if(i.type==='anime'){
+    h+=`<div class="tiles">${tile((i.progress||0)+'/'+(i.total||'?'),'ตอนที่ดูแล้ว')}${tile(i.score?'★ '+i.score:'-','คะแนน')}</div>`;
+  }else if(i.type==='book'){
+    h+=`<div class="tiles">${tile(i.owned?'✓':'–','ซื้อแล้ว')}${tile(i.score?'★ '+i.score:'-','คะแนน')}</div>`;
+  }
+  if(i.note)h+=`<div class="pcard"><h3>${tr('โน้ตส่วนตัว')}</h3><div style="white-space:pre-wrap">${esc(i.note)}</div></div>`;
+  if(mg){
+    if(!l.length)h+=`<p class="note">${tr('ยังไม่มีรายการเล่ม กด “จัดการเล่ม” เพื่อดึงปกหรือสร้างเล่ม')}</p>`;
+    else{
+      const F=detFilter,pass=v=>F==='all'||(F==='owned'&&v.own)||(F==='missing'&&!v.own)||(F==='wish'&&v.wish&&!v.own)||(F==='read'&&v.read);
+      const fc=(k,lb,n)=>`<button class="chip" data-df="${k}" aria-pressed="${F===k}">${tr(lb)} ${n}</button>`;
+      h+=`<div class="shelftools">${fc('all','ทั้งหมด',l.length)}${fc('owned','มีแล้ว',l.filter(v=>v.own).length)}${fc('missing','ยังไม่มี',l.filter(v=>!v.own).length)}${fc('wish','อยากได้',l.filter(v=>v.wish&&!v.own).length)}${fc('read','อ่านแล้ว',l.filter(v=>v.read).length)}</div><div class="dgrid">`+
+        l.filter(pass).map(v=>{const p=volPrice(i,v),miss=!v.own&&F!=='read',pr=v.own?(p.paid!=null?money(p.paid):''):(p.paid??p.pc)!=null?'~'+money(p.paid??p.pc):'';
+          return `<div class="dt${miss?' miss':''}"><button class="dc" data-dn="${v.n}" aria-label="${esc(tr('แก้ไขเล่ม {0}',v.n))}">${v.cover?`<img loading="lazy" src="${esc(v.cover)}" alt="" onerror="this.remove()">`:`<span class="fb">${v.n}</span>`}<span class="num">${v.n}</span>${v.read?`<span class="rdm">✓</span>`:''}</button><button class="ck" data-dk="own" data-dn="${v.n}" aria-pressed="${!!v.own}" aria-label="${esc(tr('ซื้อ'))}">✓</button>${v.own?'':`<button class="hrt" data-dk="wish" data-dn="${v.n}" aria-pressed="${!!v.wish}" aria-label="Wishlist">♡</button>`}<div class="pr">${pr}</div></div>`}).join('')+'</div>';
+    }
+  }
+  $('#dBody').innerHTML=h;
+}
+$('#dBody').onclick=e=>{
+  const i=S.items.find(x=>x.id===detId);if(!i)return;volItem=i;editId=i.id;
+  const df=e.target.closest('[data-df]');if(df){detFilter=df.dataset.df;renderDetail();return}
+  if(e.target.closest('#dVols')){openVols();return}
+  if(e.target.closest('#dNext')){const st=volStat(i);if(!st.next)return;addVol(st.next);const v=i.volList.find(x=>x.n===st.next);v.own=true;setOwnDate(v);syncVols();renderDetail();toast('ซื้อเล่ม {0} แล้ว',st.next);return}
+  if(e.target.closest('#dWishAll')){const st=volStat(i);let n=0;for(let k=1;k<=st.total;k++){addVol(k);const v=i.volList.find(x=>x.n===k);if(!v.own&&!v.wish){v.wish=true;n++}}syncVols();renderDetail();toast('เพิ่ม Wishlist {0} เล่ม',n);return}
+  const dk=e.target.closest('[data-dk]');
+  if(dk){const v=i.volList.find(x=>x.n===+dk.dataset.dn);if(!v)return;
+    if(dk.dataset.dk==='own'){v.own=!v.own;if(v.own)setOwnDate(v)}else v.wish=!v.wish;
+    if(!v.wish)delete v.wish;syncVols();renderDetail();return}
+  const dn=e.target.closest('[data-dn]');if(dn)openCov(+dn.dataset.dn);
+};
+$('#dEdit').onclick=()=>{if(detId)openEdit(detId)};
+let detDown=null;   // ปิดเมื่อกดและปล่อยเมาส์บนพื้นหลัง (กันปิดเองตอนลากเลือกข้อความ)
+detDlg.addEventListener('mousedown',e=>{detDown=e.target});
+detDlg.addEventListener('click',e=>{if(e.target===detDlg&&detDown===detDlg)detDlg.close()});
+
+/* ---------- Wishlist ระดับเล่ม ---------- */
+let wishPub='all';
+function renderWish(){
+  const out=$('#out');out.className='';
+  const price=(i,v)=>{const p=volPrice(i,v);return p.paid??p.pc};
+  const groups=[];
+  for(const i of S.items){if(i.type!=='manga')continue;const l=(i.volList||[]).filter(v=>v.wish&&!v.own).sort((a,b)=>a.n-b.n);if(l.length)groups.push({i,l})}
+  const pk=g=>pubObj(g.i)?g.i.pub:'__none',pn=k=>k==='__none'?'':((S.cfg.pubs.find(o=>o.id===k)||{}).name||k);
+  const pubs=[...new Set(groups.map(pk))].sort((a,b)=>a==='__none'?1:b==='__none'?-1:pn(a).localeCompare(pn(b),S.lang));
+  if(wishPub!=='all'&&!pubs.includes(wishPub))wishPub='all';
+  const shown=wishPub==='all'?groups:groups.filter(g=>pk(g)===wishPub);
+  const nV=shown.reduce((a,g)=>a+g.l.length,0),budget=shown.reduce((a,g)=>a+g.l.reduce((x,v)=>x+(price(g.i,v)||0),0),0);
+  const cnt=k=>groups.filter(g=>k==='all'||pk(g)===k).reduce((a,g)=>a+g.l.length,0);
+  let h=`<div class="wcard"><div class="wl">${tr('รอซื้ออยู่ ♡')}</div><div class="big">${tr('{0} เล่ม',nV)}<small>· ${tr('{0} เรื่อง',shown.length)}</small></div><div class="dsub">${tr('งบประมาณ ~{0}',money(budget))}</div></div>`;
+  if(!groups.length){out.innerHTML=h+`<div class="empty">${tr('Wishlist ยังว่างอยู่ เปิดหน้ารายละเอียดของมังงะ แล้วกด ♡ ที่เล่มที่อยากได้ หรือกด “ใส่เล่มที่ยังขาดทั้งหมดใน Wishlist”')}</div>`;return}
+  h+=`<p class="note">${tr('แยกตามสำนักพิมพ์')}</p><div class="shelftools">`+[['all',tr('ทั้งหมด')],...pubs.map(k=>[k,k==='__none'?tr('ไม่ระบุสำนักพิมพ์'):pn(k)])].map(([k,lb])=>`<button class="chip" data-wp="${esc(k)}" aria-pressed="${wishPub===k}">${esc(lb)} ${cnt(k)}</button>`).join('')+'</div>';
+  for(const g of shown){
+    const i=g.i,st=volStat(i);
+    h+=`<section class="pn"><div class="wh"><div style="min-width:0"><h3>${esc(i.title)}</h3><div class="sm"><span>${tr('มีในชั้นแล้ว {0} เล่ม',st.own)}</span>${pubOf(i)?`<span>🏢 ${esc(pubOf(i))}</span>`:''}</div></div><span class="cnt">${tr('{0} เล่ม',g.l.length)}</span></div><div class="wrow">`+
+      g.l.map(v=>{const p=price(i,v);return `<div class="wt"><button class="dc" data-wid="${i.id}" title="${esc(i.title)}">${v.cover?`<img loading="lazy" src="${esc(v.cover)}" alt="" onerror="this.remove()">`:`<span class="fb">${v.n}</span>`}<span class="num">${v.n}</span></button><div class="pr">${p!=null?'~'+money(p):''}</div><button class="btn mini" data-wbuy="${i.id}" data-n="${v.n}">✓ ${tr('ซื้อแล้ว')}</button></div>`}).join('')+'</div></section>';
+  }
+  out.innerHTML=h;
+}
+
+/* ---------- เหตุการณ์ ---------- */
+$('#ePubAdd').onclick=()=>{
+  const nm=(prompt(tr('ชื่อสำนักพิมพ์ใหม่'))||'').trim();if(!nm)return;
+  let o=S.cfg.pubs.find(x=>x.name.toLowerCase()===nm.toLowerCase());
+  if(!o){o={id:uid(),name:nm,color:PAL[S.cfg.pubs.length%PAL.length]};S.cfg.pubs.push(o);save()}
+  fillEditCfg(true);$('#ePub').value=o.id;
+};
+$('#eThemes').onclick=e=>{const b=e.target.closest('[data-th]');if(!b)return;const id=b.dataset.th;editThemes.has(id)?editThemes.delete(id):editThemes.add(id);b.setAttribute('aria-pressed',String(editThemes.has(id)))};
+$('#eTags').onclick=e=>{const b=e.target.closest('[data-t]');if(!b)return;const id=b.dataset.t;editTags.has(id)?editTags.delete(id):editTags.add(id);b.setAttribute('aria-pressed',String(editTags.has(id)))};
+$('#eCfgBtn').onclick=openSettings;
+$('#settingsBtn').onclick=openSettings;
+$('#catAdd').onclick=()=>addCfg('cats','ธีมใหม่');
+$('#demoAdd').onclick=()=>addCfg('demos','Demographic ใหม่');
+$('#tagAdd').onclick=()=>addCfg('tags','แท็กใหม่');
+$('#pubAdd').onclick=()=>addCfg('pubs','สำนักพิมพ์ใหม่');
+$('#fCat').onchange=e=>{fCat=e.target.value;render()};
+$('#fDemo').onchange=e=>{fDemo=e.target.value;render()};
+$('#fTag').onchange=e=>{fTag=e.target.value;render()};
+$('#fPub').onchange=e=>{fPub=e.target.value;render()};
+$('#syTok').onchange=e=>{S.syncToken=e.target.value.trim();S.syncGist='';save(true);if(S.syncToken)syncNow();else syncMsgUpdate()};
+$('#syNow').onclick=()=>{if(!S.syncToken){toast('วางโทเคนก่อน');return}syncNow()};
+$('#syOff').onclick=()=>{S.syncToken='';S.syncGist='';S.syncAt=0;$('#syTok').value='';save(true);setSync('')};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&S.syncToken&&Date.now()-(S.syncAt||0)>60000)syncNow()});
+for(const t of['manga','anime','book','shelf','wish','stats'])$('#tab-'+t).onclick=()=>{S.tab=t;filter='all';save();render()};
+$('#theme').onclick=()=>{S.theme=S.theme==='dark'?'light':'dark';save();render()};
+$('#view').onclick=()=>{S.view=S.view==='grid'?'list':'grid';save();render()};
+$('#q').oninput=render;$('#sort').onchange=render;
+$('#stats').onclick=e=>{const b=e.target.closest('[data-f]');if(b){filter=b.dataset.f;render()}};
+$('#out').onclick=e=>{
+  const wp=e.target.closest('[data-wp]');if(wp){wishPub=wp.dataset.wp;render();return}
+  const wb=e.target.closest('[data-wbuy]');
+  if(wb){const it=S.items.find(x=>x.id===wb.dataset.wbuy),v=it&&(it.volList||[]).find(x=>x.n===+wb.dataset.n);if(v){v.own=true;setOwnDate(v);volItem=it;syncVols();toast('ซื้อเล่ม {0} แล้ว',v.n)}return}
+  const wd=e.target.closest('[data-wid]');if(wd){openDetail(wd.dataset.wid);return}
+  const ss=e.target.closest('[data-ss]');if(ss){statScope=ss.dataset.ss;render();return}
+  const er=e.target.closest('[data-er]');if(er){S.expRange=er.dataset.er;save();render();return}
+  const f=e.target.closest('[data-sf]');if(f){shelfFilter=f.dataset.sf;render();return}
+  if(e.target.closest('#shelfSort')){S.shelfSort=S.shelfSort==='desc'?'asc':'desc';save();render();return}
+  const tg=e.target.closest('[data-tg]');
+  if(tg){const c=S.shelfCollapsed=S.shelfCollapsed||{};c[tg.dataset.tg]=!c[tg.dataset.tg];save();render();return}
+  if(e.target.closest('#shelfAll')){
+    const ids=S.items.filter(i=>i.type==='manga'&&(i.volList||[]).length).map(i=>i.id),c=S.shelfCollapsed||{};
+    S.shelfCollapsed=ids.every(id=>c[id])?{}:Object.fromEntries(ids.map(id=>[id,true]));save();render();return}
+  const eb=e.target.closest('[data-eid]');if(eb){openDetail(eb.dataset.eid);return}
+  const b=e.target.closest('[data-sid]');if(b){editId=b.dataset.sid;openVols();return}
+  const c=e.target.closest('.card');if(c)openDetail(c.dataset.id)};
+$('#add').onclick=openAdd;
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>b.closest('dialog').close());
+$('#m-search').onclick=()=>mode('search');$('#m-manual').onclick=()=>mode('manual');
+let deb;$('#sq').oninput=()=>{clearTimeout(deb);deb=setTimeout(doSearch,500)};   // debounce 500ms
+$('#srcSel').onchange=doSearch;
+$('#results').onclick=e=>{
+  if(e.target.closest('[data-manual]')){mode('manual');$('#mTitle').value=$('#sq').value.trim();$('#mTitle').focus();return}
+  const b=e.target.closest('.res');if(!b)return;const r=cands[+b.dataset.n],h=haveOf(r);
+  if(h){addDlg.close();openDetail(h.id);return}
+  addItem({...r,progress:0})};
+$('#mSave').onclick=async()=>{
+  const title=$('#mTitle').value.trim();if(!title){toast('กรุณากรอกชื่อเรื่อง');return}
+  let cover=$('#mCover').value.trim();
+  const f=$('#mFile').files[0];
+  if(f){try{cover=await resize(f)}catch{toast('อ่านรูปไม่ได้');return}}
+  addItem({title,year:$('#mYear').value.trim(),cover,author:$('#mAuthor').value.trim()});
+  $('#mTitle').value=$('#mYear').value=$('#mCover').value=$('#mFile').value=$('#mAuthor').value='';
+};
+$('#eSave').onclick=saveEdit;
+$('#eRevert').onclick=()=>{const i=S.items.find(x=>x.id===editId);if(i&&i.orig)$('#eTitleIn').value=i.orig};
+$('#eDel').onclick=()=>{if(confirm(tr('ลบรายการนี้?'))){S.items=S.items.filter(x=>x.id!==editId);save();render();editDlg.close();toast('ลบแล้ว')}};
+$('#export').onclick=()=>{
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([JSON.stringify({v:2,items:S.items,cfg:S.cfg},null,2)],{type:'application/json'}));
+  a.download=`manga-anime-backup-${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);
+};
+$('#import').onclick=()=>$('#importFile').click();
+$('#importFile').onchange=async e=>{
+  const f=e.target.files[0];if(!f)return;
+  try{
+    const d=JSON.parse(await f.text());const arr=Array.isArray(d)?d:d.items;
+    if(!Array.isArray(arr)||arr.some(x=>!x||!x.title||!['manga','anime','book'].includes(x.type)))throw 0;
+    const map=new Map(S.items.map(i=>[i.id,i]));
+    arr.forEach(x=>map.set(x.id||crypto.randomUUID(),{...newItem({}),...x,id:x.id||crypto.randomUUID()}));
+    S.items=[...map.values()];
+    if(!Array.isArray(d)&&d.cfg&&!S.cfg.tags.length&&!S.cfg.cats.length){S.cfg=d.cfg;for(const k of['tags','cats','pubs','demos'])S.cfg[k]=S.cfg[k]||[];S.items.forEach(normItem)}
+    save();render();toast('นำเข้า {0} รายการ',arr.length);
+  }catch{toast('ไฟล์ไม่ถูกต้อง')}
+  e.target.value='';
+};
+// ย้ายชื่อสำนักพิมพ์แบบพิมพ์เอง (publisher) ไปเป็นรายการที่เลือกได้ (pub)
+(function migratePubs(){
+  let ch=false;
+  for(const i of S.items){
+    if(typeof i.publisher!=='string')continue;
+    const nm=i.publisher.trim();
+    if(nm&&!i.pub){let o=S.cfg.pubs.find(x=>x.name.toLowerCase()===nm.toLowerCase());if(!o){let h=5381;for(const c of nm.toLowerCase())h=(h*33^c.codePointAt(0))>>>0;o={id:'pb_'+h.toString(36),name:nm,color:PAL[S.cfg.pubs.length%PAL.length]};S.cfg.pubs.push(o)}i.pub=o.id}
+    delete i.publisher;ch=true;
+  }
+  if(ch)save();
+})();
+// Demographic เริ่มต้น (id คงที่ ทุกเครื่องตรงกัน) สร้างครั้งเดียว แก้/ลบได้
+(function seedDemos(){
+  if(S.cfg.demosSeeded||S.cfg.demos.length)return;
+  S.cfg.demos=[['dm_shonen','โชเน็น'],['dm_seinen','เซเน็น'],['dm_shojo','โชโจ'],['dm_josei','โจเซ'],['dm_kodomo','โคโดโมะ']].map(([id,name],k)=>({id,name,color:PAL[k%PAL.length]}));
+  S.cfg.demosSeeded=true;save();
+})();
+$('#lang').value=S.lang;
+$('#lang').onchange=e=>{S.lang=e.target.value;save();applyStatic();render()};
+syncSources();applyStatic();render();if(S.syncToken)syncNow();
+</script>
+</body>
+</html>
