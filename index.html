@@ -471,6 +471,8 @@ button.pill[aria-pressed=true]{background:var(--c);color:#fff;text-shadow:0 0 3p
       <option value="latest">ปกเล่มล่าสุดที่ซื้อ</option>
     </select>
     <p class="note">ใช้กับมังงะที่ดึงปกรายเล่มไว้แล้ว เรื่องที่ตั้งปกหลักเองไว้จะไม่ถูกเปลี่ยน</p>
+    <label style="display:flex;gap:8px;align-items:center;margin:8px 0 2px"><input id="setImgProxy" type="checkbox"> โหลดรูปปกจาก MangaDex ผ่าน proxy</label>
+    <p class="note">ใช้เมื่อรูปปกจาก MangaDex ไม่ขึ้น (เครือข่ายบล็อกโดเมนรูป) ต้องตั้ง proxy และอัปเดต Worker ก่อน ถ้าโหลดรูปไม่ได้ เว็บจะเปิดโหมดนี้ให้เอง (ตั้งแยกในแต่ละเครื่อง)</p>
     <h3>ธีม</h3><div id="catList"></div><button class="btn" id="catAdd">+ เพิ่มธีม</button>
     <h3>Demographic</h3><div id="demoList"></div><button class="btn" id="demoAdd">+ เพิ่ม Demographic</button>
     <h3>แท็ก</h3><div id="tagList"></div><button class="btn" id="tagAdd">+ เพิ่มแท็ก</button>
@@ -730,6 +732,8 @@ const DICT={
 "สร้างธีม แท็ก และ Demographic ได้ในตั้งค่า (ปุ่ม ⚙ ด้านซ้ายล่าง)":["Create themes, tags and demographics in Settings (the ⚙ button at the bottom left).","Темы, теги и аудиторию можно создать в настройках (кнопка ⚙ внизу слева).","テーマ・タグ・対象層は設定（左下の ⚙ ボタン）で作成できます。"],
 "MangaDex: ลิงก์หน้าเรื่อง หรือรหัส (ไม่บังคับ)":["MangaDex: title page link or ID (optional)","MangaDex: ссылка на страницу или ID (необязательно)","MangaDex：作品ページのリンクまたはID（任意）"],
 "ลิงก์หรือรหัส MangaDex ไม่ถูกต้อง":["Invalid MangaDex link or ID","Неверная ссылка или ID MangaDex","MangaDexのリンクまたはIDが正しくありません"],
+"โหลดรูปปกจาก MangaDex ผ่าน proxy":["Load MangaDex covers through the proxy","Загружать обложки MangaDex через прокси","MangaDexの表紙をプロキシ経由で読み込む"],
+"ใช้เมื่อรูปปกจาก MangaDex ไม่ขึ้น (เครือข่ายบล็อกโดเมนรูป) ต้องตั้ง proxy และอัปเดต Worker ก่อน ถ้าโหลดรูปไม่ได้ เว็บจะเปิดโหมดนี้ให้เอง (ตั้งแยกในแต่ละเครื่อง)":["Use this when MangaDex covers do not show (your network blocks the image domain). Requires the proxy and an updated Worker. The site turns this on automatically if images fail to load (set per device).","Используйте, если обложки MangaDex не загружаются (сеть блокирует домен картинок). Нужны прокси и обновлённый Worker. Сайт включит режим сам, если картинки не загрузятся (настройка для каждого устройства).","MangaDexの表紙が表示されない場合（ネットワークが画像ドメインをブロック）に使用します。プロキシと更新済みWorkerが必要です。画像を読み込めないとき自動でオンになります（端末ごとの設定）。"],
 "จำนวนเล่ม":["Total volumes","Всего томов","総巻数"],
 "สร้างเล่ม 1–N":["Create vol. 1–N","Создать тома 1–N","1〜N巻を作成"],
 "ติ๊ก “ซื้อ” ครบทุกเล่ม":["Mark all as owned","Отметить все как купленные","全巻を購入済みにする"],
@@ -873,7 +877,11 @@ function visible(){
   return a;
 }
 // ปกหลักของรายการ: ปกที่ตั้งเอง (coverPin) > ตามค่ารวม (cfg.coverMode) > ปกจากฐานข้อมูล
-function coverOf(i){
+const MDIMG='https://uploads.mangadex.org/';
+// ถ้าโหลดรูปจาก MangaDex ตรงๆ ไม่ได้ ให้อ่านผ่าน Worker (proxy) แทน (เก็บ URL เดิมไว้ในข้อมูล แปลงเฉพาะตอนแสดง)
+const imgUrl=u=>(S.imgViaProxy&&S.mdProxy&&typeof u==='string'&&u.startsWith(MDIMG))?mdBase()+'/'+u.slice(MDIMG.length):u;
+const coverOf=i=>imgUrl(coverRaw(i));
+function coverRaw(i){
   if(i.type==='manga'){
     if(i.coverPin)return i.coverPin;
     const m=S.cfg.coverMode,l=(i.volList||[]).filter(v=>v.cover);
@@ -1310,7 +1318,7 @@ function addCfg(k,label){
   save();renderCfg();render();
   const n=document.querySelectorAll('#'+LISTID[k]+' .nm');n[n.length-1].select();
 }
-function openSettings(){renderCfg();$('#syTok').value=S.syncToken||'';$('#coverMode').value=S.cfg.coverMode||'orig';$('#setName').value=S.cfg.libName||'';$('#setTag').value=S.cfg.tagline||'';$('#setBanUrl').value=S.cfg.bannerUrl||'';$('#setBanShow').checked=!S.bannerOff;$('#setUser').value=S.cfg.userName||'';$('#setNavUrl').value=S.cfg.navImgUrl||'';syncMsgUpdate();setDlg.showModal()}
+function openSettings(){renderCfg();$('#syTok').value=S.syncToken||'';$('#coverMode').value=S.cfg.coverMode||'orig';$('#setName').value=S.cfg.libName||'';$('#setTag').value=S.cfg.tagline||'';$('#setBanUrl').value=S.cfg.bannerUrl||'';$('#setBanShow').checked=!S.bannerOff;$('#setUser').value=S.cfg.userName||'';$('#setImgProxy').checked=!!S.imgViaProxy;$('#setNavUrl').value=S.cfg.navImgUrl||'';syncMsgUpdate();setDlg.showModal()}
 setDlg.addEventListener('change',e=>{
   const t=e.target;if(!t.dataset||!t.dataset.k||!t.dataset.id)return;
   const o=S.cfg[t.dataset.k].find(x=>x.id===t.dataset.id);if(!o)return;
@@ -1331,6 +1339,7 @@ $('#setTag').onchange=e=>cfgSet('tagline',e.target.value.trim());
 $('#setBanUrl').onchange=e=>{const u=e.target.value.trim();if(u)S.banner='';cfgSet('bannerUrl',u)};
 $('#setBanFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{S.banner=await resize(f,1600);delete S.cfg.bannerUrl;$('#setBanUrl').value='';save();renderBrand();toast('บันทึกแล้ว')}catch{toast('อ่านรูปไม่ได้')}};
 $('#setBanClear').onclick=()=>{S.banner='';delete S.cfg.bannerUrl;$('#setBanUrl').value='';$('#setBanFile').value='';save();renderBrand()};
+$('#setImgProxy').onchange=e=>{S.imgViaProxy=e.target.checked;save();render()};
 $('#setUser').onchange=e=>{cfgSet('userName',e.target.value.trim());render()};
 $('#setNavUrl').onchange=e=>{const u=e.target.value.trim();if(u)S.navImg='';cfgSet('navImgUrl',u)};
 $('#setNavFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{S.navImg=await resize(f,600);delete S.cfg.navImgUrl;$('#setNavUrl').value='';save();renderBrand();toast('บันทึกแล้ว')}catch{toast('อ่านรูปไม่ได้')}};
@@ -1662,6 +1671,17 @@ $('#importFile').onchange=async e=>{
   }catch{toast('ไฟล์ไม่ถูกต้อง')}
   e.target.value='';
 };
+// รูปที่ถูกเพิ่มเข้าหน้า: ถ้าเปิดโหมด proxy ให้แปลง URL ก่อนโหลด
+const fixImg=im=>{const u=im.getAttribute('src');if(!u)return;const n=imgUrl(u);if(n!==u)im.setAttribute('src',n)};
+new MutationObserver(ms=>{for(const m of ms)for(const n of m.addedNodes){if(n.nodeType!==1)continue;if(n.tagName==='IMG')fixImg(n);else n.querySelectorAll&&n.querySelectorAll('img').forEach(fixImg)}}).observe(document.body,{childList:true,subtree:true});
+// รูปจาก MangaDex โหลดตรงไม่ได้ (เช่น เครือข่ายบล็อก) -> เปิดโหมด proxy อัตโนมัติ แล้วลองใหม่ครั้งเดียว
+document.addEventListener('error',e=>{
+  const im=e.target;if(!im||im.tagName!=='IMG'||!S.mdProxy)return;
+  const u=im.getAttribute('src')||'';if(!u.startsWith(MDIMG))return;
+  e.stopImmediatePropagation();
+  if(!S.imgViaProxy){S.imgViaProxy=true;save()}
+  im.setAttribute('src',imgUrl(u));
+},true);
 // ย้ายชื่อสำนักพิมพ์แบบพิมพ์เอง (publisher) ไปเป็นรายการที่เลือกได้ (pub)
 (function migratePubs(){
   let ch=false;
