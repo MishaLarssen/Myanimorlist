@@ -879,7 +879,10 @@ function visible(){
 // ปกหลักของรายการ: ปกที่ตั้งเอง (coverPin) > ตามค่ารวม (cfg.coverMode) > ปกจากฐานข้อมูล
 const MDIMG='https://uploads.mangadex.org/';
 // ถ้าโหลดรูปจาก MangaDex ตรงๆ ไม่ได้ ให้อ่านผ่าน Worker (proxy) แทน (เก็บ URL เดิมไว้ในข้อมูล แปลงเฉพาะตอนแสดง)
-const imgUrl=u=>(S.imgViaProxy&&S.mdProxy&&typeof u==='string'&&u.startsWith(MDIMG))?mdBase()+'/'+u.slice(MDIMG.length):u;
+// ลิงก์รูปปกจากหน้าเว็บ mangadex.org/covers/... (คัดลอกที่อยู่รูปจากเว็บ) -> แปลงเป็นที่อยู่ CDN ของจริง uploads.mangadex.org + ใช้ไฟล์ย่อ 512px
+const MD_COV=/^https?:\/\/(?:uploads\.|www\.)?mangadex\.org\/covers\/(.+)$/i;
+const mdCanon=u=>{const m=typeof u==='string'&&u.match(MD_COV);if(!m)return u;let r=m[1];if(/\.(?:jpe?g|png|webp|gif)$/i.test(r)&&!/\.\d+\.jpg$/i.test(r))r+='.512.jpg';return MDIMG+'covers/'+r};
+const imgUrl=u=>{u=mdCanon(u);return(S.imgViaProxy&&S.mdProxy&&typeof u==='string'&&u.startsWith(MDIMG))?mdBase()+'/'+u.slice(MDIMG.length):u};
 const coverOf=i=>imgUrl(coverRaw(i));
 function coverRaw(i){
   if(i.type==='manga'){
@@ -1238,7 +1241,7 @@ $('#vGrid').onclick=e=>{
 };
 /* ---------- ปกรายเล่ม: วาง URL / อัปโหลดเอง / ตั้งเป็นปกหลัก ---------- */
 const covDlg=$('#covDlg');let covVol=null,covTemp='';
-function covPreview(){$('#cvImg').src=covTemp||$('#cvUrl').value.trim()||(covVol&&covVol.cover)||PH}
+function covPreview(){$('#cvImg').src=imgUrl(covTemp||$('#cvUrl').value.trim()||(covVol&&covVol.cover)||PH)}
 function covState(){
   $('#cvDel').hidden=!(covVol&&covVol.cover);
   $('#cvUnpin').hidden=!volItem.coverPin;
@@ -1257,7 +1260,7 @@ const covValue=()=>covTemp||$('#cvUrl').value.trim()||covVol.cover||'';
 function covApply(pin){
   const c=covValue();
   if(pin&&!c){toast('ยังไม่มีรูปปก ใส่ URL หรืออัปโหลดรูปก่อน');return}
-  if(c)covVol.cover=c;if(pin)volItem.coverPin=c;
+  const cc=mdCanon(c);if(c)covVol.cover=cc;if(pin)volItem.coverPin=cc;
   for(const[k,id]of[['pc','#cvPc'],['paid','#cvPd']]){const n=num($(id).value);if(n==null)delete covVol[k];else covVol[k]=n}
   if($('#cvDate').value)covVol.date=$('#cvDate').value;else delete covVol.date;
   covVol.own=$('#cvOwn').checked;covVol.read=$('#cvRead').checked;covVol.wish=$('#cvWish').checked;
@@ -1677,7 +1680,7 @@ new MutationObserver(ms=>{for(const m of ms)for(const n of m.addedNodes){if(n.no
 // รูปจาก MangaDex โหลดตรงไม่ได้ (เช่น เครือข่ายบล็อก) -> เปิดโหมด proxy อัตโนมัติ แล้วลองใหม่ครั้งเดียว
 document.addEventListener('error',e=>{
   const im=e.target;if(!im||im.tagName!=='IMG'||!S.mdProxy)return;
-  const u=im.getAttribute('src')||'';if(!u.startsWith(MDIMG))return;
+  const u=im.getAttribute('src')||'';if(!MD_COV.test(u))return;
   e.stopImmediatePropagation();
   if(!S.imgViaProxy){S.imgViaProxy=true;save()}
   im.setAttribute('src',imgUrl(u));
